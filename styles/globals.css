@@ -339,6 +339,29 @@ button.tab *::-moz-selection,
   }
 }
 
+/* Tablet portrait mode (769px - 1024px) - consistent layout across iOS and Android */
+@media (min-width: 769px) and (max-width: 1024px) {
+  html,
+  body {
+    background: radial-gradient(circle at top left, #f9fbff 0%, #eef2ff 32%, #e5f4ff 64%, #eef3f8 100%);
+  }
+
+  .layout-container {
+    background: radial-gradient(circle at top left, #f9fbff 0%, #eef2ff 32%, #e5f4ff 64%, #eef3f8 100%);
+  }
+
+  /* Ensure consistent padding for tablets */
+  .layout-container .main-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Hide desktop-only elements on tablets */
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
 /* Mobile Elements Hidden on Desktop */
 .mobile-bottom-nav,
 .mobile-dashboard-layout {

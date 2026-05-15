@@ -133,7 +133,8 @@ const Layout = ({ children }) => {
     });
     const [isMobilePhone, setIsMobilePhone] = useState(() => {
         if (typeof window !== 'undefined') {
-            return window.innerWidth < 768;
+            // Use <= to include 768px (iPad mini portrait) for consistent mobile layout
+            return window.innerWidth <= 768;
         }
         return false;
     });
@@ -158,7 +159,8 @@ const Layout = ({ children }) => {
     useEffect(() => {
         const checkScreenSize = () => {
             setIsMobileScreen(window.innerWidth < 1280);
-            setIsMobilePhone(window.innerWidth < 768);
+            // Use <= to include 768px (iPad mini portrait) for consistent mobile layout
+            setIsMobilePhone(window.innerWidth <= 768);
         };
 
         // Initial check

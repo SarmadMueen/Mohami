@@ -306,8 +306,8 @@ const SubscriptionPage = () => {
                     </div>
                 </div>
 
-                {/* Pricing Cards - Only show on desktop */}
-                {isDesktop && isAdmin && (
+                {/* Pricing Cards - Only show on desktop (not on iPad/iPhone) */}
+                {!isMobile && isDesktop && isAdmin && (
                     <div style={{ marginTop: '48px' }}>
                         <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '24px', textAlign: 'center' }}>باقات الاشتراك المتاحة</h3>
                         <div className="pricing-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', maxWidth: '640px', margin: '0 auto' }}>
