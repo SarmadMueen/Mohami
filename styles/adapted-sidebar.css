@@ -1,0 +1,71 @@
+/* Import Noto Kufi Arabic font */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap");
+
+.main-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 24px;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+
+.sidebar-menu {
+  background: #ffffff;
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  border-left: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  min-height: 100vh;
+  height: auto;
+  gap: 8px;
+}
+
+.section-button {
+  background: #ffffff;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: right;
+  color: #374151;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  transition: all 0.2s ease;
+  font-family: "Noto Kufi Arabic", sans-serif;
+  line-height: 1.6;
+  width: 100%;
+}
+
+.section-button:hover {
+  background-color: #f9fafb;
+  color: #111827;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section-button.highlighted {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.section-button:focus {
+  outline: none;
+  ring: 2px solid #3b82f6;
+  ring-offset: 1px;
+}
+
+/* Utility classes for Tailwind-like functionality */
+.font-noto-kufi-arabic {
+  font-family: "Noto Kufi Arabic", sans-serif;
+}

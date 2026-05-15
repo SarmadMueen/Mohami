@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية وأمن البيانات | محامي برو</title>
+    <!-- استيراد خط Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0033cc; /* لون مستوحى من الشعار */
+            --light-blue: #e6f0ff;
+            --text-dark: #1f2937;
+            --text-gray: #4b5563;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .last-updated {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .lang-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 8px 24px;
+            border-radius: 25px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Content Card */
+        .policy-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-top: 5px solid var(--primary-blue);
+        }
+
+        .policy-section {
+            margin-bottom: 35px;
+        }
+
+        .policy-section h2 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-section h2::before {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 24px;
+            background-color: #00d2ff; /* لون السماوي من الشعار */
+            border-radius: 4px;
+        }
+
+        .policy-section p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .policy-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .policy-section ul li {
+            position: relative;
+            padding-right: 25px; /* RTL spacing */
+            padding-left: 0;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        /* English specific overrides */
+        [dir="ltr"] .policy-section ul li {
+            padding-left: 25px;
+            padding-right: 0;
+        }
+        
+        [dir="ltr"] .policy-section h2::before {
+            margin-right: 10px;
+            margin-left: 0;
+        }
+
+        [dir="rtl"] .policy-section h2::before {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        .policy-section ul li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0; /* RTL bullet position */
+            top: -5px;
+        }
+
+        [dir="ltr"] .policy-section ul li::before {
+            left: 0; /* LTR bullet position */
+            right: auto;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .policy-card {
+                padding: 25px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1 id="page-title">سياسة الخصوصية وأمن البيانات</h1>
+        <p class="last-updated" id="last-updated">اخر تحديث: 22 أبريل 2026</p>
+    </div>
+
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="switchLang('ar')">العربية</button>
+        <button class="lang-btn" onclick="switchLang('en')">English</button>
+    </div>
+
+    <div class="policy-card">
+        
+        <!-- ==============================
+             النسخة العربية (Arabic Content)
+             ============================== -->
+        <div id="content-ar">
+            <div class="policy-section">
+                <h2>مقدمة ترحيبية ونطاق التطبيق</h2>
+                <p>أهلاً بكم في منصة "محامي برو" (Mohami Pro). نحن ندرك الأهمية القصوى للخصوصية وسرية المعلومات في مهنة المحاماة، ونحرص على حماية خصوصية مكاتب المحاماة في العراق باحترام التام لسرية البيانات بجميع أنواعها. تلتزم منصتنا بتطبيق أفضل الممارسات التقنية والتنظيمية المعتمدة في مجال أمن المعلومات. تصف هذه السياسة كيفية جمعنا، واستخدامنا، وحمايتنا للمعلومات عند استخدامكم لنظامنا لإدارة الممارسات القانونية، ويعتبر استخدامكم للخدمة موافقة ضمنية على الالتزام بأحكامها.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>1. تحديد البيانات التي نجمعها</h2>
+                <p>يعتمد "محامي برو" مبدأ الحد الأدنى من جمع البيانات لتقديم الخدمة:</p>
+                <ul>
+                    <li><strong>بيانات الحساب (الأساسية):</strong> تشمل الاسم، البريد الإلكتروني، رقم الهاتف، والمعلومات المهنية (مثل رقم الانتماء لنقابة المحامين) اللازمة لإنشاء وإدارة الحساب.</li>
+                    <li><strong>البيانات التقنية والتشغيلية (غير الشخصية):</strong> لأغراض تنظيمية وتحسين الأداء، نجمع بيانات تقنية مثل عنوان بروتوكول الإنترنت (IP) المُعمّى، نوع المتصفح، وتاريخ تفعيل الخدمة. هذه البيانات لا تشمل إطلاقاً بيانات موكليكم أو قضاياكم.</li>
+                    <li><strong>بيانات الممارسة القانونية (البيانات الحساسة):</strong> وهي كافة البيانات التي تقومون بإدخالها عبر النظام (إدارة الدعاوى، تفاصيل الموكلين، الوثائق المرفوعة، والمذكرات).</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>2. ملكية البيانات والعزل التقني الدقيق</h2>
+                <p><strong>أنتم تملكون بياناتكم بالكامل.</strong> لا يدعي "محامي برو" أي حقوق ملكية على البيانات القانونية التي تدخلونها.</p>
+                <p>ولضمان أعلى درجات الخصوصية، يتم تخزين بيانات كل مكتب محاماة في <strong>بيئة معزولة تقنياً ومنطقياً</strong> باستخدام تقنيات قواعد البيانات المتقدمة ومسارات تخزين مستقلة. مما يضمن العزل الكامل وعدم تقاطع البيانات بين حسابات ومكاتب المحامين المختلفة بأي حال من الأحوال.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>3. احترام أسرار المهنة وعدم المراقبة</h2>
+                <p>نتعهد بأن "محامي برو" لا يقوم بأي شكل من الأشكال بمراقبة، أو مراجعة، أو تحليل المحتوى النصي القانوني أو المهني الذي يُدخله المستخدم (تفاصيل القضايا، المذكرات، وغيرها). يقتصر أي تعامل تقني مع البيانات على المعالجة الآلية اللازمة لتشغيل النظام فقط (مثل البحث والفهرسة التي يطلبها المستخدم ذاته).</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>4. كيفية استخدام البيانات المجمعة</h2>
+                <p>نستخدم البيانات حصرياً من أجل:</p>
+                <ul>
+                    <li>تشغيل وتوفير وظائف النظام (جدولة الجلسات، الأرشفة، الحسابات).</li>
+                    <li>تأمين حسابكم والتحقق من الهوية.</li>
+                    <li>اكتشاف الأخطاء التقنية وتقديم الدعم الفني بناءً على طلبكم.</li>
+                </ul>
+                <p><strong>نحن نتعهد بعدم بيع، أو تأجير، أو مشاركة بياناتكم أو بيانات موكليكم مع أي أطراف ثالثة لأغراض تسويقية مطلقاً.</strong></p>
+            </div>
+
+            <div class="policy-section">
+                <h2>5. سياسة حظر الوصول للموظفين (Zero-Access Policy)</h2>
+                <p>لا يملك أي من موظفي أو مهندسي فريق "محامي برو" الحق في الاطلاع، أو التصفح، أو النقل المباشر لأي بيانات قانونية مُدخلة تخص مكتبكم. في حالات الدعم الفني الاستثنائية التي تستدعي الوصول، لا يتم ذلك إلا بعد الحصول على موافقة صريحة ومكتوبة من صاحب الحساب، وضمن الغرض التقني المحدد فقط.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>6. مسؤولية إدارة الوصول والصلاحيات الداخلية</h2>
+                <p>يتحمل المستخدم الأساسي (مدير المكتب) المسؤولية الكاملة عن ضبط الصلاحيات ومستويات الوصول داخل حسابه الخاص بالموظفين أو المحامين المساعدين. كما يتحمل المستخدم مسؤولية أي سوء استخدام أو تسريب للبيانات ينتج عن مشاركة بيانات الدخول لحسابات مشتركة خارج الإجراءات الأمنية المعتمدة.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>7. أمن البيانات والتخزين</h2>
+                <p>نطبق إجراءات أمنية متقدمة تشمل التشفير أثناء النقل (TLS/SSL) وفي وضع السكون باستخدام بنية السحابية الموثوقة. كما نعتمد أنظمة جدران حماية وخوارزميات أمنية لحماية البيانات من الوصول غير المصرح به أو الفقدان.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>8. خدمات الأطراف الثالثة والروابط الخارجية</h2>
+                <p>عند تفعيل خدمات إضافية عبر النظام تعتمد على أطراف ثالثة (مثل بوابات الدفع الإلكتروني أو خدمات البريد)، فإن دور "محامي برو" يقتصر على توفير التكامل التقني للربط. وتخضع بياناتكم التي يتم تمريرها لسياسات الخصوصية الخاصة بتلك الجهات، ولا نتحمل المسؤولية عن معالجتها بعد انتقالها إليهم بناءً على طلبكم.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>9. الطلبات الحكومية والقضائية</h2>
+                <p>في حال تلقي طلب رسمي من جهة مختصة، تلتزم الشركة بالحد الأدنى المطلوب قانوناً وبموجب أمر قضائي قطعي نافذ في جمهورية العراق، مع بذل الجهود الممكنة لإشعار المستخدم مسبقاً متى ما كان ذلك مسموحاً قانوناً.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>10. تحديد المسؤولية واللغة المعتمدة</h2>
+                <p>تقتصر أي مسؤولية محتملة لـ "محامي برو" –إن وُجدت– على قيمة الاشتراك المدفوع خلال آخر فترة اشتراك فقط، ولا تشمل أي أضرار غير مباشرة أو خسائر تبعية. في حال ترجمة سياسة الخصوصية إلى لغات أخرى، تُعتمد النسخة العربية باعتبارها المرجع القانوني الملزم في حال وجود أي تعارض في التفسير.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>11. اتفاقية حماية البيانات (DPA)</h2>
+                <p>تُعد هذه الاتفاقية جزءاً لا يتجزأ من سياسة الخصوصية، وتنظم العلاقة المنطقية والقانونية بين مكتب المحاماة (المستخدم) ومنصة "محامي برو" فيما يتعلق بمعالجة البيانات:</p>
+                <ul>
+                    <li><strong>أدوار الأطراف:</strong> يُعد مكتب المحاماة (المستخدم) هو "المتحكم بالبيانات" (Data Controller)، بينما تُعد منصة "محامي برو" هي "معالج البيانات" (Data Processor) بالقدر اللازم لتقديم الخدمة فقط.</li>
+                    <li><strong>تعليمات المعالجة:</strong> نلتزم بمعالجة البيانات حصرياً بناءً على تعليماتكم الآلية عبر استخدام النظام، ودون أي استخدام مستقل أو إضافي.</li>
+                    <li><strong>السرية والتدابير الأمنية:</strong> نلتزم بالحفاظ على السرية التامة وتطبيق تدابير تقنية وتنظيمية (مثل التشفير والعزل الفني) لحماية البيانات من الوصول غير المصرح به أو الفقدان.</li>
+                    <li><strong>المعالجات الفرعية (Sub-processors):</strong> يوافق المستخدم على لجوء "محامي برو" لمزودي بنية تحتية سحابية آمنة ، مع ضمان التزامهم بمستوى حماية لا يقل عن شروط هذه الاتفاقية.</li>
+                    <li><strong>الإخطار بالحوادث:</strong> في حال وقوع خرق أمني مؤثر، نلتزم بإخطاركم خلال مدة زمنية معقولة فور العلم بالحادث، مع تقديم تفاصيل الخرق والدعم اللازم.</li>
+                    <li><strong>الإنهاء والحذف:</strong> عند إنهاء استخدام النظام، نلتزم بحذف وإتلاف بياناتكم وفق الإجراءات التقنية المعتمدة، باستثناء النسخ الاحتياطية المشفرة المؤقتة التي تُحذف آلياً ضمن دوراتها العادية.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>12. حدود الاعتماد على البرنامج ومسؤولية المستخدم</h2>
+                <p>يُقدم "محامي برو" كأداة تقنية مساعدة لتنظيم مكتب المحاماة وإدارة البيانات، ولا يُعد بأي حال من الأحوال بديلاً عن التقدير المهني أو القانوني للمحامي. يتحمل المستخدم المسؤولية الكاملة عن دقة ومشروعية وصحة البيانات والمحتويات التي يقوم بإدخالها. لا تتحمل منصتنا أي مسؤولية عن أي قرارات، أو إجراءات، أو نتائج مهنية أو قانونية يتخذها المستخدم بالاعتماد على النظام أو مخرجاته.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>13. التوقف المؤقت والقوة القاهرة</h2>
+                <p>نسعى جاهدين لضمان توافر الخدمة على مدار الساعة، إلا أنه قد يتم تعليق أو إيقاف الخدمة مؤقتاً لأغراض الصيانة الدورية، أو التحديثات التقنية الضرورية. كما لا تتحمل المنصة أي مسؤولية عن أي تأخير أو فشل في تقديم الخدمة نتيجة أحداث "القوة القاهرة" الخارجة عن سيطرتنا المعقولة (مثل الكوارث الطبيعية، الانقطاع الواسع لخدمات الإنترنت، الهجمات السيبرانية، أو أعطال البنية التحتية لمزودي الخدمات السحابية).</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>14. فقدان البيانات والنسخ الاحتياطية</h2>
+                <p>لا تتحمل الشركة أي مسؤولية عن فقدان البيانات الناتج عن حذف المستخدم لها بنفسه (سواء بقصد أو عن طريق الخطأ)، أو نتيجة سوء استخدام النظام. يُرجى العلم أنه عند قيامكم بحذف بيانات أو إنهاء الحساب، قد تبقى بعض السجلات في النسخ الاحتياطية المشفرة لفترة زمنية محدودة جداً لأغراض الحماية التقنية فقط، ولن تكون متاحة للمعالجة، حيث يتم حذفها تلقائياً وفق جداول الحذف الآلية.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>15. الامتثال لأفضل الممارسات الدولية للأمن السحابي</h2>
+                <p>نحن نعتمد في "محامي برو" على بنية تحتية سحابية وممارسات أمنية تتوافق مع المعايير الدولية المعترف بها في إدارة أمن المعلومات وإدارة مخاطر الخصوصية (مثل مبادئ معايير ISO/IEC 27001). ورغم أننا نطبق تدابير مهنية وتقنية صارمة لتقليل المخاطر إلى أدنى حد، يقر المستخدم بأنه لا يوجد نظام تقني متصل بالإنترنت آمن بنسبة 100%.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>16. القابلية للفصل</h2>
+                <p>في حال اعتبار أي بند من بنود سياسة الخصوصية هذه غير قابل للتنفيذ أو باطلاً بموجب حكم قضائي أو نظام نافذ، فإن ذلك لا يؤثر إطلاقاً على سريان باقي البنود، وتظل سارية وملزمة بكامل قوتها.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>17. التواصل معنا</h2>
+                <p>في حال وجود أي استفسار حول سياسة الخصوصية وأمن البيانات، يرجى التواصل مع فريق الدعم عبر البريد الإلكتروني: info@mohamipro.com</p>
+            </div>
+        </div>
+
+        <!-- ==============================
+             النسخة الإنجليزية (English Content)
+             ============================== -->
+        <div id="content-en" class="hidden">
+            <div class="policy-section">
+                <h2>Introduction & Scope</h2>
+                <p>Welcome to the "Mohami Pro" platform. We understand the paramount importance of privacy and confidentiality in the legal profession. We are committed to protecting the privacy of law firms in Iraq by strictly respecting the confidentiality of all data types. Our platform adheres to the best approved technical and organizational practices in information security. This policy outlines how we collect, use, and protect information when you use our practice management system. Using our services constitutes implied consent to this policy.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>1. Information We Collect</h2>
+                <p>Mohami Pro operates on a principle of data minimization:</p>
+                <ul>
+                    <li><strong>Account Data (Basic):</strong> Includes name, email, phone number, and professional details (like Bar Association ID) necessary to create and manage your account.</li>
+                    <li><strong>Technical & Operational Data (Non-Personal):</strong> For organizational purposes and system improvement, we collect anonymized technical data such as masked IP addresses, browser types, and service activation dates. This strictly excludes client or case data.</li>
+                    <li><strong>Legal Practice Data (Sensitive):</strong> All data you input into the system (case management, client details, uploaded documents, and memos).</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>2. Data Ownership & Strict Technical Isolation</h2>
+                <p><strong>You own your data completely.</strong> Mohami Pro claims no ownership rights over the legal data you enter.</p>
+                <p>To ensure maximum privacy, every law firm's data is stored in a <strong>technically and logically isolated environment</strong> using advanced database technologies and independent storage paths. This guarantees complete isolation and prevents data crossover between different accounts under any circumstances.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>3. Respect for Professional Secrecy & No Monitoring</h2>
+                <p>We pledge that Mohami Pro does not, in any way, monitor, review, or analyze the legal or professional text content you input (case details, memos, etc.). Any technical interaction with the data is strictly limited to automated processing necessary to operate the system (such as search indexing requested by the user).</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>4. How We Use Collected Data</h2>
+                <p>We use data exclusively to:</p>
+                <ul>
+                    <li>Operate system functionalities (session scheduling, archiving, accounting).</li>
+                    <li>Secure your account and verify your identity.</li>
+                    <li>Detect technical errors and provide requested technical support.</li>
+                </ul>
+                <p><strong>We pledge never to sell, rent, or share your data or your clients' data with any third parties for marketing purposes.</strong></p>
+            </div>
+
+            <div class="policy-section">
+                <h2>5. Zero-Access Policy for Employees</h2>
+                <p>No employee or engineer at Mohami Pro has the right to view, browse, or directly transfer any inputted legal data belonging to your firm. In exceptional technical support cases requiring access, this will only occur following explicit, written consent from the account owner, and strictly within the scope of the specific technical issue.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>6. Responsibility for Internal Access & Permissions</h2>
+                <p>The primary user (Firm Manager) bears full responsibility for configuring permissions and access levels within their account for employees or assistant lawyers. The user also bears responsibility for any misuse or data leakage resulting from sharing login credentials outside approved security procedures.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>7. Data Security & Storage</h2>
+                <p>We implement advanced security measures including encryption in transit (TLS/SSL) and at rest utilizing the reliable cloud infrastructure. We also deploy firewalls and security algorithms to protect data from unauthorized access or loss.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>8. Third-Party Services & External Links</h2>
+                <p>When activating additional services via the system that rely on third parties (such as Wayl payment gateways or Nodemailer), Mohami Pro's role is limited to providing the technical integration. Your data passed to them is subject to their respective privacy policies, and we bear no responsibility for its processing once transferred at your request.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>9. Government & Judicial Requests</h2>
+                <p>Should we receive an official request from a competent authority, the company commits to providing only the legal minimum required, pursuant to a final, binding court order in the Republic of Iraq, while making all possible efforts to notify the user in advance if legally permissible.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>10. Limitation of Liability & Governing Language</h2>
+                <p>Any potential liability of Mohami Pro – if any – is limited strictly to the subscription value paid during the last subscription period, and excludes any indirect or consequential damages. If this policy is translated into other languages, the Arabic version is the binding legal reference in the event of any interpretational conflict.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>11. Data Protection Agreement (DPA)</h2>
+                <p>This agreement is an integral part of the Privacy Policy and regulates the relationship between the Law Firm (User) and the "Mohami Pro" platform regarding data processing:</p>
+                <ul>
+                    <li><strong>Roles of the Parties:</strong> The Law Firm (User) is the "Data Controller", while "Mohami Pro" acts strictly as the "Data Processor" to the extent necessary to provide the service.</li>
+                    <li><strong>Processing Instructions:</strong> We commit to processing data exclusively based on your automated instructions through system usage, without any independent or additional use.</li>
+                    <li><strong>Confidentiality & Security Measures:</strong> We are committed to maintaining strict confidentiality and implementing robust technical and organizational measures (e.g., encryption and isolation) to protect data from unauthorized access or loss.</li>
+                    <li><strong>Sub-processors:</strong> The user agrees that Mohami Pro may use secure cloud infrastructure providers, ensuring they adhere to a level of protection no less than this agreement.</li>
+                    <li><strong>Incident Notification:</strong> In the event of a material security breach, we commit to notifying you within a reasonable time after becoming aware of the incident, providing details and necessary support.</li>
+                    <li><strong>Termination & Deletion:</strong> Upon terminating the use of the system, we commit to deleting and destroying your data according to approved technical procedures, except for temporary encrypted backups that are automatically deleted within their standard cycles.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>12. Limits of Reliance on the App & User Responsibility</h2>
+                <p>Mohami Pro is provided as an assistive technical tool for organizing law firms and managing data. It is in no way a substitute for the lawyer's professional or legal judgment. The user bears full responsibility for the accuracy, legality, and validity of the data and content they input. Our platform assumes no liability for any professional or legal decisions, actions, or outcomes taken by the user based on the system or its outputs.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>13. Service Interruption & Force Majeure</h2>
+                <p>We strive to ensure continuous service availability; however, the service may be temporarily suspended or interrupted for routine maintenance or necessary technical updates. Furthermore, the platform bears no responsibility for any delay or failure in providing the service due to "Force Majeure" events beyond our reasonable control (e.g., natural disasters, widespread internet outages, cyberattacks, or cloud infrastructure failures).</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>14. Data Loss & Backups</h2>
+                <p>The company is not liable for data loss resulting from the user deleting the data themselves (whether intentionally or accidentally) or due to system misuse. Please note that upon deleting data or terminating an account, some records may remain in encrypted backups for a strictly limited technical protection period. These are unavailable for processing and are automatically completely destroyed according to our automated deletion schedules.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>15. Compliance with International Cloud Security Best Practices</h2>
+                <p>At Mohami Pro, we rely on cloud infrastructure and security practices that align with internationally recognized standards for information security management and privacy risk management (such as the principles of ISO/IEC 27001). Although we apply strict professional and technical measures to minimize risks, the user acknowledges that no internet-connected technical system can be 100% secure.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>16. Severability</h2>
+                <p>If any provision of this Privacy Policy is deemed unenforceable or void by a judicial ruling or applicable law, this shall not affect the validity of the remaining provisions, which shall remain in full force and effect.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>17. Contact Us</h2>
+                <p>For any inquiries regarding our privacy and data security policy, please contact our support team via email: info@mohamipro.com</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Mohami Pro. جميع الحقوق محفوظة لـ محامي برو.
+    </div>
+</div>
+
+<script>
+    function switchLang(lang) {
+        const arContent = document.getElementById('content-ar');
+        const enContent = document.getElementById('content-en');
+        const pageTitle = document.getElementById('page-title');
+        const lastUpdated = document.getElementById('last-updated');
+        const btns = document.querySelectorAll('.lang-btn');
+        
+        // Remove active class from all buttons
+        btns.forEach(btn => btn.classList.remove('active'));
+
+        if (lang === 'ar') {
+            arContent.classList.remove('hidden');
+            enContent.classList.add('hidden');
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            pageTitle.innerText = "سياسة الخصوصية وأمن البيانات";
+            lastUpdated.innerText = "اخر تحديث: 22 أبريل 2026";
+            btns[0].classList.add('active'); // Set Arabic button active
+        } else {
+            arContent.classList.add('hidden');
+            enContent.classList.remove('hidden');
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            pageTitle.innerText = "Privacy and Data Security Policy";
+            lastUpdated.innerText = "Last Updated: April 22, 2026";
+            btns[1].classList.add('active'); // Set English button active
+        }
+    }
+</script>
+
+</body>
+</html>

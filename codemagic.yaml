@@ -1,0 +1,219 @@
+workflows:
+  ios-workflow:
+    name: iOS Build and Publish
+    environment:
+      groups:
+        - app-env
+      vars:
+        BUNDLE_ID: com.mohamipro.app
+      xcode: latest
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+      cancel_previous_builds: true
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Verify environment variables
+        script: |
+          echo "=== Checking NEXT_PUBLIC env vars for build ==="
+          if [ -n "$NEXT_PUBLIC_SUPABASE_URL" ]; then
+            echo "✅ NEXT_PUBLIC_SUPABASE_URL is set: ${NEXT_PUBLIC_SUPABASE_URL:0:30}..."
+          else
+            echo "❌ FAIL: NEXT_PUBLIC_SUPABASE_URL is NOT set!"
+            exit 1
+          fi
+          if [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
+            echo "✅ NEXT_PUBLIC_SUPABASE_ANON_KEY is set (${#NEXT_PUBLIC_SUPABASE_ANON_KEY} chars)"
+          else
+            echo "❌ FAIL: NEXT_PUBLIC_SUPABASE_ANON_KEY is NOT set!"
+            exit 1
+          fi
+          if [ -n "$NEXT_PUBLIC_APP_URL" ]; then
+            echo "✅ NEXT_PUBLIC_APP_URL is set: $NEXT_PUBLIC_APP_URL"
+          else
+            echo "❌ FAIL: NEXT_PUBLIC_APP_URL is NOT set!"
+            exit 1
+          fi
+      - name: Build web app
+        script: |
+          npm run build
+          npx next export
+      - name: Verify build output (debug)
+        script: |
+          echo "=== Checking out/ directory exists ==="
+          if [ -d "out" ]; then
+            echo "✅ PASS: out/ directory exists"
+            echo "Files in out/:"
+            ls -la out/
+          else
+            echo "❌ FAIL: out/ directory does not exist!"
+            exit 1
+          fi
+          
+          echo ""
+          echo "=== Checking out/index.html exists ==="
+          if [ -f "out/index.html" ]; then
+            echo "✅ PASS: out/index.html exists"
+          else
+            echo "❌ FAIL: out/index.html does not exist!"
+            exit 1
+          fi
+          
+          echo ""
+          echo "=== Checking Supabase URL is baked into built files ==="
+          if grep -rq "niwtiaalvvivyjqtgznw" out/; then
+            echo "✅ PASS: Supabase URL found in built files"
+          else
+            echo "⚠️ WARN: Supabase URL NOT found in built files - env vars may not be working!"
+          fi
+      - name: Install Capacitor
+        script: |
+          npm install -g @capacitor/cli
+      - name: Add iOS platform
+        script: |
+          npx cap add ios
+      - name: Sync Capacitor
+        script: |
+          npx cap sync ios
+      - name: Fix Capacitor Camera Preview SPM product name
+        script: |
+          echo "Fixing CapacitorCommunityCameraPreview SPM product name..."
+          sed -i '' 's/name: "CapacitorCommunityCameraPreview", package: "CapacitorCommunityCameraPreview"/name: "CapacitorCommunityCameraPreviewPlugin", package: "CapacitorCommunityCameraPreview"/g' ios/App/CapApp-SPM/Package.swift
+      - name: Copy custom app icons
+        script: |
+          echo "=== Copying custom icons from public/AppIcons ==="
+          # Copy the AppIcon.appiconset directly to iOS project AFTER sync
+          if [ -d "public/AppIcons/Assets.xcassets/AppIcon.appiconset" ]; then
+            echo "Source icons found at: public/AppIcons/Assets.xcassets/AppIcon.appiconset"
+            echo "Copying to: ios/App/App/Assets.xcassets/"
+            mkdir -p ios/App/App/Assets.xcassets
+            rm -rf ios/App/App/Assets.xcassets/AppIcon.appiconset
+            cp -r public/AppIcons/Assets.xcassets/AppIcon.appiconset ios/App/App/Assets.xcassets/
+            echo "✅ Custom icons copied to iOS project"
+            echo "Files copied:"
+            ls -la ios/App/App/Assets.xcassets/AppIcon.appiconset/ | head -20
+          else
+            echo "❌ Custom icons not found at public/AppIcons/Assets.xcassets/AppIcon.appiconset"
+            echo "Available in public/AppIcons/:"
+            ls -la public/AppIcons/
+          fi
+      - name: Install CocoaPods
+        script: |
+          echo "=== Looking for Podfile ==="
+          find ios -name "Podfile" -type f
+          echo ""
+          echo "=== Contents of ios/App/ ==="
+          ls -la ios/App/
+          echo ""
+          if [ -f "ios/App/Podfile" ]; then
+            cd ios/App
+            pod install
+          else
+            echo "No Podfile in ios/App/, checking if xcworkspace already exists..."
+            find ios -name "*.xcworkspace" -type d
+          fi
+      - name: Verify workspace exists
+        script: |
+          WORKSPACE=$(find ios -name "*.xcworkspace" -type d | head -1)
+          if [ -n "$WORKSPACE" ]; then
+            echo "✅ Workspace found: $WORKSPACE"
+          else
+            echo "❌ No .xcworkspace found!"
+            echo "Full ios/ directory structure:"
+            find ios -type f | head -50
+            exit 1
+          fi
+      - name: Verify Capacitor config (debug)
+        script: |
+          echo "=== capacitor.config.ts ==="
+          cat capacitor.config.ts
+          
+          echo ""
+          echo "=== iOS web assets verification ==="
+          echo "Files in ios/App/App/public/:"
+          ls -la ios/App/App/public/ 2>/dev/null || echo "public dir not found"
+          echo ""
+          echo "Checking if index.html exists in iOS bundle:"
+          find ios -name "index.html" -type f 2>/dev/null
+      - name: Set up keychain
+        script: |
+          keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+      - name: Set up code signing
+        script: |
+          keychain add-certificates
+      - name: Set up provisioning profiles
+        script: |
+          if [ -d "ios/App/App.xcworkspace" ]; then
+            xcode-project use-profiles --workspace ios/App/App.xcworkspace
+          else
+            xcode-project use-profiles --project ios/App/App.xcodeproj
+          fi
+      - name: Set export compliance and privacy strings
+        script: |
+          /usr/libexec/PlistBuddy -c "Add :ITSAppUsesNonExemptEncryption bool false" ios/App/App/Info.plist || /usr/libexec/PlistBuddy -c "Set :ITSAppUsesNonExemptEncryption false" ios/App/App/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string 'We need camera access to capture documents and case attachments.'" ios/App/App/Info.plist || /usr/libexec/PlistBuddy -c "Set :NSCameraUsageDescription 'We need camera access to capture documents and case attachments.'" ios/App/App/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'We need photo library access to attach documents and case photos.'" ios/App/App/Info.plist || /usr/libexec/PlistBuddy -c "Set :NSPhotoLibraryUsageDescription 'We need photo library access to attach documents and case photos.'" ios/App/App/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :NSContactsUsageDescription string 'We need contacts access to easily add new clients from your phonebook.'" ios/App/App/Info.plist || /usr/libexec/PlistBuddy -c "Set :NSContactsUsageDescription 'We need contacts access to easily add new clients from your phonebook.'" ios/App/App/Info.plist
+      - name: Set app version and build number
+        script: |
+          cd ios/App
+          agvtool new-marketing-version 1.0
+          # Auto-increment build number using timestamp to be higher than 202605082113
+          BUILD_NUM=$(date +"%Y%m%d%H%M")
+          agvtool new-version -all $BUILD_NUM
+          echo "Build number set to: $BUILD_NUM"
+      - name: Build iOS app
+        script: |
+          # Capacitor 8.x uses SPM, not CocoaPods - use xcodeproj
+          if [ -d "ios/App/App.xcworkspace" ]; then
+            echo "Using xcworkspace"
+            xcodebuild -workspace ios/App/App.xcworkspace \
+              -scheme App \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -archivePath $CM_BUILD_DIR/App.xcarchive \
+              clean archive
+          else
+            echo "Using xcodeproj"
+            xcodebuild -project ios/App/App.xcodeproj \
+              -scheme App \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -archivePath $CM_BUILD_DIR/App.xcarchive \
+              clean archive
+          fi
+      - name: Export IPA
+        script: |
+          if [ -d "ios/App/App.xcworkspace" ]; then
+            xcode-project build-ipa \
+              --archive-directory "$CM_BUILD_DIR" \
+              --ipa-directory "$CM_BUILD_DIR" \
+              --workspace ios/App/App.xcworkspace \
+              --scheme App
+          else
+            xcode-project build-ipa \
+              --archive-directory "$CM_BUILD_DIR" \
+              --ipa-directory "$CM_BUILD_DIR" \
+              --project ios/App/App.xcodeproj \
+              --scheme App
+          fi
+    artifacts:
+      - $CM_BUILD_DIR/App.ipa
+      - $CM_BUILD_DIR/App.xcarchive
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+        submit_to_app_store: false

@@ -1,0 +1,51 @@
+
+  // Get all items (sessions, tasks, reminders) for a specific date
+  const getDayItems = (date) => {
+    if (!date) return []
+    const dateToCompare = new Date(date)
+    dateToCompare.setHours(0, 0, 0, 0)
+    
+    const items = []
+
+    // Sessions (including next_session_date)
+    sessionsData.forEach(s => {
+      if (s.sessiondate) {
+        const d = new Date(s.sessiondate)
+        d.setHours(0, 0, 0, 0)
+        if (d.getTime() === dateToCompare.getTime()) {
+          items.push({ type: 'session', data: s })
+        }
+      }
+      if (s.next_session_date) {
+        const d = new Date(s.next_session_date)
+        d.setHours(0, 0, 0, 0)
+        if (d.getTime() === dateToCompare.getTime()) {
+          items.push({ type: 'session-next', data: s })
+        }
+      }
+    })
+
+    // Tasks
+    tasks.forEach(t => {
+      if (t.task_deadline) {
+        const d = new Date(t.task_deadline)
+        d.setHours(0, 0, 0, 0)
+        if (d.getTime() === dateToCompare.getTime() && t.task_status !== 'completed' && t.task_status !== 'مكتملة') {
+          items.push({ type: 'task', data: t })
+        }
+      }
+    })
+
+    // Reminders
+    reminders.forEach(r => {
+      if (r.reminder_date) {
+        const d = new Date(r.reminder_date)
+        d.setHours(0, 0, 0, 0)
+        if (d.getTime() === dateToCompare.getTime()) {
+          items.push({ type: 'reminder', data: r })
+        }
+      }
+    })
+
+    return items
+  }

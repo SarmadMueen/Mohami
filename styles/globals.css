@@ -1,0 +1,810 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Amiri&family=Noto+Kufi+Arabic:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Fustat:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+html,
+body {
+  background: radial-gradient(circle at top left, #f9fbff 0%, #eef2ff 32%, #e5f4ff 64%, #eef3f8 100%);
+  font-family: "Noto Kufi Arabic", sans-serif;
+  overflow-x: hidden;
+  /* Prevent horizontal scrollbar */
+  width: 100%;
+}
+
+/* Desktop: always show scrollbar to prevent layout shift on navigation */
+@media (min-width: 1025px) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/* Ensure legacy page containers use gradient background */
+.content-wrapper {
+  background: radial-gradient(circle at top left, #f9fbff 0%, #eef2ff 32%, #e5f4ff 64%, #eef3f8 100%) !important;
+}
+
+/* New layout: apply light gradient to main content area (dashboard, accounting, templates) */
+.layout-container {
+  background: radial-gradient(circle at top left, #f9fbff 0%, #eef2ff 32%, #e5f4ff 64%, #eef3f8 100%);
+}
+
+.layout-container .main-content {
+  background: transparent;
+}
+
+/* Override for client view page - white background */
+.view-client-page .main-content {
+  background: white !important;
+}
+
+/* Legacy dashboard / case containers use gradient background */
+.legacy-dashboard,
+.case-details-container {
+  background: radial-gradient(circle at top left, #f9fbff 0%, #eef2ff 32%, #e5f4ff 64%, #eef3f8 100%) !important;
+}
+
+
+/* Block print unless in-app print triggered */
+@media print {
+  body:not(.allow-print) * {
+    visibility: hidden !important;
+  }
+  body.allow-print * {
+    visibility: visible !important;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* White table background */
+.custom-table {
+  background-color: #fff;
+}
+
+/* 1-pixel borders for the table */
+.custom-table {
+  border: 1px solid #000;
+}
+
+/* 1-pixel borders for table cells */
+.custom-table th,
+.custom-table td {
+  border: 1px solid #000;
+}
+
+
+/* Add borders to the table */
+table.table-bordered {
+  border: 1px solid #ddd;
+}
+
+
+
+/* Add borders to table cells */
+table.table-bordered th,
+table.table-bordered td {
+  border: 1px solid #ddd;
+}
+
+/* Prevent text selection highlight on tabs - Maximum priority */
+button.tab,
+button.tab *,
+.tab,
+.tab *,
+.tabs-list,
+.tabs-list *,
+.tabs-list button,
+.tabs-list button * {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -khtml-user-select: none !important;
+}
+
+button.tab::selection,
+button.tab *::selection,
+.tab::selection,
+.tab *::selection,
+.tabs-list::selection,
+.tabs-list *::selection,
+.tabs-list button::selection,
+.tabs-list button *::selection {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+button.tab::-moz-selection,
+button.tab *::-moz-selection,
+.tab::-moz-selection,
+.tab *::-moz-selection,
+.tabs-list::-moz-selection,
+.tabs-list *::-moz-selection,
+.tabs-list button::-moz-selection,
+.tabs-list button *::-moz-selection {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+
+/* ======================================
+   Mobile App Dashboard Quick Actions
+   (must be in globals.css so it's available
+   in Capacitor static export)
+   ====================================== */
+
+/* Hidden by default (desktop) */
+.mobile-app-quick-section {
+  display: none;
+}
+
+/* Standard quick actions bar - hidden on mobile */
+@media (max-width: 768px) {
+  .standard-quick-actions {
+    display: none !important;
+  }
+
+  .mobile-app-quick-section {
+    display: block;
+    margin: -8px -8px 16px -8px;
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  .mobile-search-bar-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .mobile-search-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .mobile-search-input-wrap {
+    position: relative;
+    flex: 1;
+  }
+
+  .mobile-search-input {
+    width: 100%;
+    padding: 12px 16px;
+    padding-right: 44px;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .mobile-search-input:focus {
+    border-color: #3B82F6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .mobile-search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748B;
+    font-size: 16px;
+  }
+
+  .mobile-search-submit-btn {
+    height: 44px;
+    min-width: 72px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+    color: #FFFFFF;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 0 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .mobile-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .mobile-action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  .mobile-action-card:active {
+    transform: scale(0.95);
+  }
+
+  .mobile-action-icon-bg {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .icon-bg-blue {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+  }
+
+  .icon-bg-cyan {
+    background: linear-gradient(135deg, #06B6D4, #0891B2);
+  }
+
+  .icon-bg-indigo {
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+  }
+
+  .icon-bg-purple {
+    background: linear-gradient(135deg, #A855F7, #9333EA);
+  }
+
+  .icon-bg-slate {
+    background: linear-gradient(135deg, #64748B, #475569);
+  }
+
+  .icon-bg-amber {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .mobile-action-card span {
+    font-family: 'Cairo', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #1E293B;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  #mobile-quick-actions.mobile-quick-actions-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    padding: 0 12px 10px 12px;
+  }
+
+  #mobile-quick-actions .mobile-action-label {
+    display: -webkit-box;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+    max-width: 100%;
+    padding: 0 2px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+
+/* ======================================
+   Mobile App General Layout
+   ====================================== */
+
+/* Mobile: force white background on all pages */
+@media (max-width: 768px) {
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .layout-container {
+    background: #ffffff !important;
+  }
+
+  .layout-container .main-content {
+    background: #ffffff !important;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    background: #ffffff !important;
+  }
+}
+
+/* Mobile Elements Hidden on Desktop */
+.mobile-bottom-nav,
+.mobile-dashboard-layout {
+  display: none;
+}
+
+.mobile-nav-item,
+.week-day-card-mobile,
+.session-card-mobile,
+.action-pill {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  /* Site padding to account for fixed bottom nav */
+  body {
+    padding-bottom: 0px;
+  }
+
+  /* Fixed Bottom Nav */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    background: #ffffff;
+    border-top: 1px solid #E2E8F0;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #1E293B;
+    background: none;
+    border: none;
+    font-size: 10px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-nav-item.active {
+    color: #2563EB;
+  }
+
+  .mobile-nav-item svg {
+    margin-bottom: 2px;
+  }
+
+  /* Hide Desktop Elements on Mobile */
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  /* Mobile Dashboard Layout Wrapper */
+  .mobile-dashboard-layout {
+    display: block;
+    padding: 0 0 16px 0;
+    background: #FFFFFF;
+    min-height: auto;
+  }
+
+  /* Financial grid gets top spacing after the header extension */
+  .mobile-dashboard-layout .mobile-bento-financial-grid {
+    margin-top: 20px !important;
+  }
+
+  /* ======================================
+     Mobile Dashboard Components
+     ====================================== */
+
+  /* 1. Quick Actions (Pills) */
+  .quick-actions-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .action-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    flex-grow: 1;
+    justify-content: center;
+    transition: none !important;
+  }
+
+  .action-pill:hover {
+    transform: none !important;
+    background-color: inherit !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .pill-blue {
+    background: #3B82F6;
+  }
+
+  .pill-green {
+    background: #10B981;
+  }
+
+  .pill-cyan {
+    background: #06B6D4;
+  }
+
+  .pill-orange {
+    background: #F59E0B;
+  }
+
+  .pill-gray {
+    background: #64748B;
+  }
+
+  .pill-red {
+    background: #EF4444;
+  }
+
+  /* 2. Financial Summary (2x2 Grid) */
+  .financial-summary-card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .financial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .financial-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .financial-item-label {
+    font-size: 11px;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .financial-item-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+  }
+
+  /* 3. Case Status (Donut + Grid) */
+  .status-card-mobile {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    direction: rtl;
+  }
+
+  .status-donut-mobile {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .status-grid-mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    flex: 1;
+  }
+
+  .status-item-mobile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #475569;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* 4. File Distribution Row */
+  .file-dist-row {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  /* 5. Daily Tasks Card */
+  .tasks-card-mobile {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  /* External Headers for Mobile Cards */
+  .mobile-section-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 24px;
+    padding: 0 8px;
+    direction: rtl;
+  }
+
+  .mobile-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .title-icon {
+    color: #3B82F6;
+    font-size: 18px;
+  }
+
+  .status-label {
+    flex: 1;
+    margin-right: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+  }
+
+  .status-count {
+    font-weight: 700;
+    color: #1E293B;
+    min-width: 14px;
+    text-align: left;
+  }
+
+  .mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .mobile-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E293B;
+  }
+
+  /* Calendar Mode Switcher */
+  .calendar-mode-switcher {
+    display: flex;
+    background: #F1F5F9;
+    padding: 2px;
+    border-radius: 8px;
+    gap: 2px;
+  }
+
+  .mode-btn {
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    color: #64748B;
+    background: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .mode-btn.active {
+    background: white;
+    color: #3B82F6;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* 6. Session Schedule - Grid Layout Improved */
+  .sessions-section-mobile {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 40px;
+  }
+
+  .week-grid-mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .week-day-card-mobile {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+
+  .week-day-card-mobile.active {
+    background: #3B82F6;
+    color: white;
+    border-color: #3B82F6;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  }
+
+  .week-day-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .week-day-name {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-weight: 600;
+  }
+
+  .week-day-num {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .session-dot-indicator {
+    width: 6px;
+    height: 6px;
+    background: #3B82F6;
+    border-radius: 50%;
+    margin-right: 4px;
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
+  }
+
+  .week-day-card-mobile.active .session-dot-indicator {
+    background: white;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  }
+
+  .month-sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .session-card-mobile {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    border-right: 4px solid #3B82F6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    min-height: 80px;
+    justify-content: center;
+  }
+
+  .session-card-mobile:active {
+    transform: scale(0.98);
+  }
+
+  /* Utilities */
+  .text-xs {
+    font-size: 0.75rem;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .text-gray {
+    color: #64748B;
+  }
+
+  /* Bottom Nav Scroll Transitions */
+  .mobile-bottom-nav {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Skeleton Loaders */
+  .skeleton {
+    background: #e2e8f0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: skeleton-loading 1.5s infinite linear;
+  }
+  @keyframes skeleton-loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+}

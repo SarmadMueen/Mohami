@@ -1,0 +1,7 @@
+I have corrected the `fetchSessions` logic in `CaseDetailsPage.js` to strictly enforce firm privacy. 
+
+**Changes Made:**
+1.  **Strict Integer Parsing:** The code now ensures `caseId` is correctly parsed as an integer when fetching the case's admin ID, preventing failures if the ID is passed as a string (which was likely the initial issue).
+2.  **Fail-Secure Only:** I updated the filter logic to **hide sessions by default** if the system cannot positively verify the case's Firm Administrator (`admin_id`). This handles edge cases where case data might be incomplete, preventing data leaks.
+
+This ensures that sessions are only displayed when the logged-in user's firm can be verified to match the session's creating firm.

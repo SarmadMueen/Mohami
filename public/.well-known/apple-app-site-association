@@ -1,0 +1,9 @@
+{
+  "applinks": {
+    "apps": ["R2JBYHQK96.com.mohamipro.app"],
+    "details": [{
+      "appIDs": ["R2JBYHQK96.com.mohamipro.app"],
+      "paths": ["/billing/*", "/settings/subscription/*"]
+    }]
+  }
+}

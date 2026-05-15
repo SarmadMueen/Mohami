@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.mohamipro.app",
+    "sha256_cert_fingerprints": ["73:40:2B:B1:43:73:B3:28:DC:FC:60:55:BB:44:83:59:33:96:2C:58:B7:90:38:23:F6:73:91:BB:88:49:A6:83"]
+  }
+}]
+

@@ -1,0 +1,12 @@
+I have successfully implemented the fix for the sessions tab.
+
+**Summary of Changes:**
+- Modified `fetchSessions` in `CaseDetailsPage.js`.
+- Added logic to fetch the **Firm Admin ID** for the current case.
+- Implemented **Client-Side Filtering**:
+    - The system now checks each session's creator.
+    - It verifies if the creator belongs to the same firm as the case.
+    - If the creator is the Admin themselves (Category 1) or an employee of that Admin, the session is displayed.
+    - Sessions from other firms (with the same case number) are now hidden.
+
+This ensures privacy and prevents data leaks between firms while maintaining visibility for all authorized lawyers within the correct firm.
