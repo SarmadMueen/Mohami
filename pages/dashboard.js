@@ -143,8 +143,9 @@ function Dashboard() {
 
     const detectMobileDashboard = () => {
       // Use screen width only, not platform detection
-      // This allows iPad/tablets to use the desktop layout
-      setIsMobileDashboard(window.innerWidth <= 767);
+      // Include iPad portrait modes (768px-1024px) in mobile layout for better UX
+      // This matches Android tablet behavior in portrait mode
+      setIsMobileDashboard(window.innerWidth <= 1024);
     };
 
     detectMobileDashboard();
@@ -8428,7 +8429,7 @@ function Dashboard() {
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .dashboard {
             padding: 10px;
           }
@@ -8597,103 +8598,11 @@ function Dashboard() {
           }
         }
 
-        /* Tablets/iPad in Portrait Mode - 2-column layout (left sidebar + center+right stacked) */
-        @media (orientation: portrait) and (max-width: 1024px) {
-          .dashboard {
-            padding: 8px;
-          }
+        /* REMOVED: Tablets/iPad in Portrait Mode 2-column layout
+           Now using mobile dashboard layout for all devices <= 1024px width
+           to match Android tablet behavior and prevent crowded UI on iPad portrait */
 
-          /* Left sidebar + main area side by side */
-          .dashboard-main-grid {
-            display: grid !important;
-            grid-template-columns: 200px 1fr !important;
-            gap: 10px;
-            align-items: start;
-          }
-
-          /* Left column: charts stay in left sidebar */
-          .dashboard-column-left {
-            grid-column: 1;
-            grid-row: 1;
-            border-left: 1px solid #E2E8F0;
-            padding-left: 8px;
-          }
-
-          /* Center column: calendar + tasks stack vertically in right area */
-          .dashboard-column-center {
-            grid-column: 2;
-            grid-row: 1;
-          }
-
-          /* Right column: move below center, span full width */
-          .dashboard-column-right {
-            grid-column: 1 / -1;
-            grid-row: 2;
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            gap: 10px;
-          }
-
-          .dashboard-column-first,
-          .dashboard-column-second,
-          .dashboard-column-third {
-            border-right: none;
-            padding-right: 0;
-          }
-
-          .dashboard-grid {
-            grid-template-columns: 1fr !important;
-            gap: 8px;
-          }
-
-          .dashboard-card {
-            width: 100%;
-            margin-bottom: 8px;
-          }
-
-          .calendar-container {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: auto;
-          }
-
-          .daily-tasks-card-modern,
-          .appointments-card-modern,
-          .expense-summary-modern {
-            width: 100%;
-          }
-
-          .quick-create-buttons {
-            flex-wrap: wrap;
-            gap: 6px;
-          }
-
-          .weekly-sessions-container-fixed {
-            width: 100%;
-            overflow-x: auto;
-          }
-
-          .donut-chart-redesigned {
-            width: 110px;
-            height: 110px;
-          }
-
-          .donut-chart-redesigned::before {
-            width: 84px;
-            height: 84px;
-          }
-
-          .donut-number-redesigned {
-            font-size: 22px;
-          }
-
-          .donut-chart-medium {
-            width: 100px;
-            height: 100px;
-          }
-        }
-
-        @media (min-width: 768px) {
+        @media (min-width: 1025px) {
           .mobile-current-week-calendar {
             display: none;
           }
@@ -8702,7 +8611,7 @@ function Dashboard() {
           }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 1024px) {
           .dashboard-main-grid {
             display: none !important;
           }
@@ -9386,7 +9295,7 @@ function Dashboard() {
            .calendar-grid-cell-modern:nth-child(n+5) {
               border-left: none; /* Adjust borders for 4 columns if possible, but grid handles layout */
            }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .mobile-dashboard-layout {
             padding: 0;
             background: #FFFFFF;
