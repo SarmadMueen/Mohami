@@ -1036,14 +1036,14 @@ const Layout = ({ children }) => {
                     </div>
 
                     <div className="mobile-app-actions">
-                        {/* Back Button - Only visible on iPad portrait/landscape */}
+                        {/* Back Button for mobile/iPad navigation */}
                         {shouldShowBackButton && (
                             <button
-                                className="ipad-back-button"
+                                className="mobile-back-button"
                                 onClick={() => router.back()}
                                 aria-label="رجوع"
                             >
-                                <ChevronLeft size={20} />
+                                <ChevronLeft size={22} />
                             </button>
                         )}
                     </div>
@@ -4136,39 +4136,44 @@ const Layout = ({ children }) => {
                     to { opacity: 1; transform: scale(1); }
                 }
 
-                /* iPad Back Button - hidden by default */
-                .ipad-back-button {
+                /* iPad-specific back button visibility */
+                /* iPad Portrait: 768px - 1024px */
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    .ipad-back-button {
+                        display: flex !important;
+                    }
+                }
+
+                /* iPad Landscape: 1025px - 1366px */
+                @media (min-width: 1025px) and (max-width: 1366px) {
+                    .ipad-back-button {
+                        display: flex !important;
+                    }
+                }
+
+                /* Mobile back button in mobile-app-header (hidden by default, shown at <=1024px) */
+                .mobile-back-button {
                     display: none;
                     align-items: center;
                     justify-content: center;
                     background: #F1F5F9;
                     border: 1px solid #E2E8F0;
-                    border-radius: 8px;
-                    padding: 6px 10px;
+                    border-radius: 10px;
+                    padding: 6px;
                     cursor: pointer;
                     transition: all 0.2s ease;
-                    color: #3B82F6;
-                    font-family: 'Cairo', sans-serif;
-                    font-size: 13px;
-                    font-weight: 600;
-                    gap: 2px;
+                    color: #475569;
+                    -webkit-tap-highlight-color: transparent;
                 }
-                .ipad-back-button:active {
-                    background: #DBEAFE;
+                .mobile-back-button:active {
+                    background: #E2E8F0;
+                    color: #1E293B;
                     transform: scale(0.95);
                 }
 
-                /* iPad Portrait: 768px - 1024px - show back button in mobile header */
-                @media (min-width: 768px) and (max-width: 1024px) {
-                    .mobile-app-header .ipad-back-button {
-                        display: flex !important;
-                    }
-                }
-
-                /* iPad Landscape: 1025px - 1366px - show back button in standard header */
-                @media (min-width: 1025px) and (max-width: 1366px) {
-                    .standard-header .ipad-back-button {
-                        display: flex !important;
+                @media (max-width: 1024px) {
+                    .mobile-back-button {
+                        display: flex;
                     }
                 }
             `}</style>
