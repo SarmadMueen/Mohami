@@ -17,7 +17,7 @@ const config: CapacitorConfig = {
       launchShowDuration: 4000,
       launchAutoHide: true,
       androidSplashResourceName: 'splash',
-      androidScaleType: 'CENTER_CROP',
+      androidScaleType: 'CENTER',
       iosSplashName: 'splash',
       showSpinner: false,
       splashFullScreen: true,

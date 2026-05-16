@@ -18321,9 +18321,38 @@ const CaseDetailsPage = () => {
                   <div className="reminder-header-content">
                     <h2>إضافة مجلد جديد</h2>
                   </div>
+                  <div className="reminder-header-actions-mobile" style={{ display: "none", gap: "8px" }}>
+                    <button
+                      type="button"
+                      className="reminder-cancel-button"
+                      onClick={handleCloseNewFolderPopup}
+                      style={{
+                        minWidth: "80px",
+                        padding: "6px 12px",
+                        fontSize: "13px",
+                        fontWeight: "600",
+                      }}
+                    >
+                      إلغاء
+                    </button>
+                    <button
+                      type="submit"
+                      form="new-folder-form"
+                      className="reminder-add-button"
+                      disabled={isCreatingFolder}
+                      style={{
+                        minWidth: "80px",
+                        padding: "6px 12px",
+                        fontSize: "13px",
+                        fontWeight: "600",
+                      }}
+                    >
+                      {isCreatingFolder ? "جاري الإضافة..." : "إضافة"}
+                    </button>
+                  </div>
                   <button
                     type="button"
-                    className="btn "
+                    className="btn reminder-close-btn-right"
                     onClick={handleCloseNewFolderPopup}
                     aria-label="إغلاق"
                   >
@@ -18332,6 +18361,7 @@ const CaseDetailsPage = () => {
                 </div>
                 <div className="reminder-popup-content">
                   <form
+                    id="new-folder-form"
                     onSubmit={(e) => {
                       e.preventDefault();
                       handleCreateNewFolder();
@@ -30637,6 +30667,8 @@ button {
             display: flex !important;
             visibility: visible !important;
             opacity: 1 !important;
+            position: relative !important;
+            z-index: 1 !important;
           }
 
           .attachments-folder-content > div {
@@ -30644,6 +30676,8 @@ button {
             display: flex !important;
             flex-direction: column !important;
             min-height: 200px !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
 
           .attachments-empty-folder {
@@ -30652,6 +30686,17 @@ button {
             justify-content: center !important;
             min-height: 200px !important;
             visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+          }
+
+          .attachments-empty-folder-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
 
           .attachments-folder-content-empty {
@@ -30659,6 +30704,8 @@ button {
             align-items: center !important;
             justify-content: center !important;
             min-height: 200px !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
 
           .attachments-files-grid {
