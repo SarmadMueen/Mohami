@@ -12,6 +12,9 @@ workflows:
         APP_STORE_CONNECT_PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgU43xHACwb6qgbJZX\nSo4ucCn5XPK7lILs4jq7MM1XVhugCgYIKoZIzj0DAQehRANCAAQjYHnpYrOiARyf\n1QLDPKpwubm4FCDGIBt3P8R+lB2GrU5l7FY9GUa0kitHbg8hG3F+W3P54wFeArCp\nLL/+mOAb\n-----END PRIVATE KEY-----"
         CERTIFICATE_PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/JVTn6wS98BGR\nwsgbXJnHP6tRmE507wbOwOB0ZojDeGoGy4g8XdAUb8A53VqmCnSmvyhgRA4LCwqb\nEO30YuBjFlAeTeEODRWAKE388f7VIqbPn3Ov5icR8Ex3dHwPIw76pF8xHB6wREI6\nhZzPQ5EZEVJtO3RZI/KZzb+9FdD1tb/cBiK4Q8ZUsCl7o2xJa+z59e8TvcA7y4Ko\nZ8MZjU0AhCLeuATnLsgRCe72szLOBnOYgVGfrhVuUVVFZnf0c2isKQ45rxRMXT/c\nhjx1I3CxGldjGv7wSPDtfbo6XBW/aozMDrJY1MqdtXpvjhUznzKGDk/DblBcXM1g\nTWamXbujAgMBAAECggEAW+Imq+tKFsHBuFcxGRIM6/47rNfxkv1ZwOZvnxSw1oHa\nOdT58sbH4SMM/OPekOWCyKsoTgo40+8lVIAxWqJzKb6Omdqm/jmk5bu6LYbokGz9\nUd3c3yfcDR/9qgiJID+ikjKUfcd+Kw5M5dPXmrxokevFOzPyzGze0Dda3ZqQnaPB\nX7w1TnprYr/iGXfK/Um4PbCLLdxMG7m+rnop8lY3ZTOCXRAFbUVbJ1NvmCuTnWPa\nPMoewbKiCD+b36k7ZbhokKAPTNc8xjyr/8/1CkoMg8Xw+L2HzPyzc30P34WfaeIQ\nb4W8khujf9HB3FNviGY1PcrTUk9ZMPwnpcMoKHWZfQKBgQDdyxyFAo5He/7kcFdj\nPhpQHhtXlvDqPqqja/7B3wp/pdFJxXt9Bi/3sk15rqfWEvTNR3kxXICfiE/rV5kS\nHxLDC1cCHSJbRYmB6FCmyZ/HFqpIeQN86R6SdLCiqtIVc1FzX6FfQXwxJkb3HUBw\nMTmKZoScW5qxhLSBx1GW/WLvXwKBgQDcoC/YakflZW8atFMOffniIVyv86w2yExC\nBunS+ZL4n03Ij7lJWbKoLES2fQE130Ewte4t17LoxAE9/S8kUkj8TxAfgEwK0vJT\nn9IAL0UVzKc4XTS0YIYhFf76qvC0AnKOhx2iqb1j9OVz9V3xTGEJMXvaYI1rVBba\nhyT4bXyOPQKBgQCJi8PFDR+1X0Vk3/Kh3kqtMu6b9ES10GU8ceYMz0iQfwH68Riz\nIVowD4iSlOkLDrh4cgHLxeUSipOdjLamEVUuVmMAMZcz6TzsrmkN9m47Jmg2B65N\nEble9DTyvGMK4Hg7x6upClB9npJV//MNYMmhdhB5cynNO1JCRZzouX1YmwKBgQCh\nZZH6yK011IF10Krd9CyET5GlqiW2ocqflr0hOLBarvdRHEsYrMS0oEXYFhR3m43u\nG3lVEfFwtEqQVZJSCNwZr6EE2m9Gj9D0efs/ZVUtwFwoMI8o0V/t/lBcgga6OPwi\n5hc48uF4qSPeM4Z4yj5GYmvPckiiVo6taKYUEsxGpQKBgFK/LMXF4feNDcMWRuZL\nYmr2+rC4AK1CUKBp0vT9tZzsrdamWAwHlmXyreolqpq89uo6uoc3DouKjTAnpuAl\nqMWVDFQVbNlMRFYoJqCkBYwnLcB2yU7Ik50bpxy8hOXeOat2KWWLLLgG4uyu1c8l\ncS+6UsroXgmkmU236KdJqdaD\n-----END PRIVATE KEY-----"
       xcode: latest
+      cache:
+        cache_paths:
+          - node_modules
     triggering:
       events:
         - push
@@ -22,60 +25,11 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
-          npm install
-      - name: Verify environment variables
-        script: |
-          echo "=== Checking NEXT_PUBLIC env vars for build ==="
-          if [ -n "$NEXT_PUBLIC_SUPABASE_URL" ]; then
-            echo "✅ NEXT_PUBLIC_SUPABASE_URL is set: ${NEXT_PUBLIC_SUPABASE_URL:0:30}..."
-          else
-            echo "❌ FAIL: NEXT_PUBLIC_SUPABASE_URL is NOT set!"
-            exit 1
-          fi
-          if [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-            echo "✅ NEXT_PUBLIC_SUPABASE_ANON_KEY is set (${#NEXT_PUBLIC_SUPABASE_ANON_KEY} chars)"
-          else
-            echo "❌ FAIL: NEXT_PUBLIC_SUPABASE_ANON_KEY is NOT set!"
-            exit 1
-          fi
-          if [ -n "$NEXT_PUBLIC_APP_URL" ]; then
-            echo "✅ NEXT_PUBLIC_APP_URL is set: $NEXT_PUBLIC_APP_URL"
-          else
-            echo "❌ FAIL: NEXT_PUBLIC_APP_URL is NOT set!"
-            exit 1
-          fi
+          npm ci
       - name: Build web app
         script: |
           npm run build
           npx next export
-      - name: Verify build output (debug)
-        script: |
-          echo "=== Checking out/ directory exists ==="
-          if [ -d "out" ]; then
-            echo "✅ PASS: out/ directory exists"
-            echo "Files in out/:"
-            ls -la out/
-          else
-            echo "❌ FAIL: out/ directory does not exist!"
-            exit 1
-          fi
-          
-          echo ""
-          echo "=== Checking out/index.html exists ==="
-          if [ -f "out/index.html" ]; then
-            echo "✅ PASS: out/index.html exists"
-          else
-            echo "❌ FAIL: out/index.html does not exist!"
-            exit 1
-          fi
-          
-          echo ""
-          echo "=== Checking Supabase URL is baked into built files ==="
-          if grep -rq "niwtiaalvvivyjqtgznw" out/; then
-            echo "✅ PASS: Supabase URL found in built files"
-          else
-            echo "⚠️ WARN: Supabase URL NOT found in built files - env vars may not be working!"
-          fi
       - name: Install Capacitor
         script: |
           npm install -g @capacitor/cli
@@ -125,50 +79,12 @@ workflows:
           else
             echo "❌ Custom splash screen not found at public/splash.png"
           fi
-      - name: Install CocoaPods
-        script: |
-          echo "=== Looking for Podfile ==="
-          find ios -name "Podfile" -type f
-          echo ""
-          echo "=== Contents of ios/App/ ==="
-          ls -la ios/App/
-          echo ""
-          if [ -f "ios/App/Podfile" ]; then
-            cd ios/App
-            pod install
-          else
-            echo "No Podfile in ios/App/, checking if xcworkspace already exists..."
-            find ios -name "*.xcworkspace" -type d
-          fi
-      - name: Verify workspace exists
-        script: |
-          WORKSPACE=$(find ios -name "*.xcworkspace" -type d | head -1)
-          if [ -n "$WORKSPACE" ]; then
-            echo "✅ Workspace found: $WORKSPACE"
-          else
-            echo "❌ No .xcworkspace found!"
-            echo "Full ios/ directory structure:"
-            find ios -type f | head -50
-            exit 1
-          fi
-      - name: Verify Capacitor config (debug)
-        script: |
-          echo "=== capacitor.config.ts ==="
-          cat capacitor.config.ts
-          
-          echo ""
-          echo "=== iOS web assets verification ==="
-          echo "Files in ios/App/App/public/:"
-          ls -la ios/App/App/public/ 2>/dev/null || echo "public dir not found"
-          echo ""
-          echo "Checking if index.html exists in iOS bundle:"
-          find ios -name "index.html" -type f 2>/dev/null
       - name: Set up keychain
         script: |
           keychain initialize
       - name: Fetch signing files
         script: |
-          echo "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR1RhZ0FBNU1nQnlHUU00OUFnRUdDUWdTTTQ5QXdFSEJId2RJQkFRWVFnVTQzeEhBQ3diNnFnYkpZWgpT280dWNOWFhQS3dsSUw0amNxN01NMVhWaHVnQ2dZSUtvSnp6MERBRWhSQU5DQUFRallIZm5Zck9pQVJ5ZgpRMUxEUE1rcHd1YjRGQ0RHSUJ0M1A4UitMQjJHclU1bDdGWTlHVWEwa2l0SGJnOGhHM0YrVzNQNTR3RmVBckNwCkxMLyttT0FiCk1JR0dFQ0tFTQotLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tKg==" | base64 -d > /tmp/auth_key.p8
+          echo "$APP_STORE_CONNECT_PRIVATE_KEY" > /tmp/auth_key.p8
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create \
