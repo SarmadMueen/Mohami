@@ -168,9 +168,7 @@ workflows:
           keychain initialize
       - name: Fetch signing files
         script: |
-          cat > /tmp/auth_key.p8 <<EOF
-$APP_STORE_CONNECT_PRIVATE_KEY
-EOF
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > /tmp/auth_key.p8
           echo "=== Debug: auth_key.p8 content ==="
           cat /tmp/auth_key.p8
           echo "=== End debug ==="
