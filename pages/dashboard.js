@@ -9947,61 +9947,31 @@ function Dashboard() {
 
         /* ── iPad Portrait (768-1024px): constrain card widths ── */
         @media (min-width: 768px) and (max-width: 1024px) {
+          .dashboard:has(.mobile-dashboard-layout) {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+
           .mobile-dashboard-layout {
-            padding-left: 4% !important;
-            padding-right: 4% !important;
+            max-width: 88vw !important;
+            width: 88vw !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            box-sizing: border-box !important;
+            align-self: center !important;
           }
 
+          .mobile-current-week-calendar,
+          .mobile-bento-financial-grid,
+          .mobile-work-schedule-section,
+          .mobile-stats-section,
           .mobile-bento-card {
-            max-width: 92% !important;
-            width: 92% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .mobile-bento-financial-grid {
-            max-width: 92% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .mobile-dashboard-layout .mobile-bento-financial-grid > .mobile-bento-card {
-            max-width: 100% !important;
             width: 100% !important;
-          }
-
-          .mobile-stats-section {
-            max-width: 92% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .mobile-work-schedule-section {
-            max-width: 92% !important;
-            width: 92% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .mobile-current-week-calendar {
-            max-width: 92% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .section-header-mobile,
-          .mobile-title-bar {
-            max-width: 92% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .mobile-item-card {
             max-width: 100% !important;
-          }
-
-          .mobile-dashboard-layout .mobile-calendar-list {
-            max-width: 100% !important;
+            align-self: stretch !important;
+            box-sizing: border-box !important;
           }
         }
       `}</style>
