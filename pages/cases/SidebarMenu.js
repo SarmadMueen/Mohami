@@ -32,7 +32,7 @@ const SidebarMenu = ({
     const [isMobileView, setIsMobileView] = useState(false);
 
     useEffect(() => {
-        const check = () => setIsMobileView(window.innerWidth <= 768);
+        const check = () => setIsMobileView(window.innerWidth <= 1024);
         check();
         window.addEventListener('resize', check);
         return () => window.removeEventListener('resize', check);
@@ -356,7 +356,7 @@ const SidebarMenu = ({
                 }
 
                 /* --- Mobile Accordion Layout --- */
-                @media (max-width: 768px) {
+                @media (max-width: 1024px) {
                     .sidebar-menu {
                         width: 100%;
                         height: auto;

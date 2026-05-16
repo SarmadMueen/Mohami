@@ -159,7 +159,7 @@ const CaseDetailsPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth <= 768;
+      const mobile = window.innerWidth <= 1024;
       setIsMobile(mobile);
       if (mobile) {
         setIsSidebarCollapsed(false);
@@ -4123,7 +4123,7 @@ const CaseDetailsPage = () => {
 
   // Helper to scroll to content area on mobile after tab click
   const scrollToContent = () => {
-    if (window.innerWidth <= 768 && contentRef.current) {
+    if (window.innerWidth <= 1024 && contentRef.current) {
       setTimeout(() => {
         if (contentRef.current) {
           contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -13403,7 +13403,7 @@ const CaseDetailsPage = () => {
       }
 
       /* Responsive Design */
-      @media (max-width: 768px) {
+      @media (max-width: 1024px) {
         .tasks-header-container {
           flex-direction: column;
           align-items: stretch;
@@ -21634,7 +21634,7 @@ const CaseDetailsPage = () => {
   direction: rtl;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .case-info-section {
     margin-right: 5;
     margin-bottom: 10px;
@@ -21645,7 +21645,7 @@ const CaseDetailsPage = () => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .case-details-container {
     flex-direction: column;
     margin-left: 0;
@@ -21902,7 +21902,7 @@ p {
   border: 1px solid #e5e7eb;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .notes-list-container {
     padding: 0 12px 16px 12px;
   }
@@ -22255,7 +22255,7 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .popup-overlay-session {
     padding: 10px;
   }
@@ -22486,14 +22486,14 @@ p {
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .sidebar-menu {
     width: 220px; /* Wider sidebar for better usability */
     flex-shrink: 0; /* Prevent the sidebar from shrinking */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .main-container {
     flex-direction: column; /* Stack sidebar on top for smaller screens */
   }
@@ -22865,7 +22865,7 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .details-grid {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
   }
@@ -23539,7 +23539,7 @@ p {
           align-items: center; 
           margin-right: 480px; 
         }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1024px) {
           .case-info-section {
             margin-right: 0;
             margin-bottom: 20px;
@@ -24138,7 +24138,7 @@ p {
 }
 
 /* Mobile: Hide duplicate tab titles inside tab content (already shown in sidebar/tab bar) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .tabs-case-container > .case-details-header .section-heading,
   .tabs-case-container > div > .case-details-header .section-heading {
     display: none !important;
@@ -26028,7 +26028,7 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .form-grid-session {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -26504,7 +26504,7 @@ h2, h3, h4 {
   color: #d9534f;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .expenses-buttons {
     flex-direction: column;
     align-items: stretch;
@@ -26741,7 +26741,7 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .case-info-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -27456,7 +27456,7 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .breadcrumb-container {
     display: none;
   }
@@ -30612,7 +30612,7 @@ button {
           max-width: 300px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .attachments-main-layout {
             flex-direction: column;
           }
@@ -30720,7 +30720,7 @@ button {
          * Mobile Adaptation: Hide scrollbars globally on mobile to satisfy user request 
          * ONLY for the main page containers, allowing inner content to scroll naturally without bars
          */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           ::-webkit-scrollbar {
             display: none;
           }
@@ -30802,7 +30802,7 @@ button {
         }
 
         /* --- Mobile Adaptation for Case Details Page --- */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           /* 1. Main Layout: Single Column */
           .main-container {
             /* Sidebar tabs appear first (on top), content below */
@@ -31387,7 +31387,7 @@ button {
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .session-card, .court-decision-card, .task-card, .opponent-card {
             box-shadow: none !important;
             border-radius: 8px !important;
