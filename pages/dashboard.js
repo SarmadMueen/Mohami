@@ -9384,7 +9384,18 @@ function Dashboard() {
             min-height: 100vh;
             direction: rtl; /* Ensure RTL for mobile layout */
             width: 100%;
+            max-width: 100%;
             box-sizing: border-box;
+          }
+
+          .mobile-bento-card {
+            max-width: 95% !important;
+            margin: 0 auto !important;
+          }
+
+          .mobile-current-week-calendar {
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* New Bento Header */

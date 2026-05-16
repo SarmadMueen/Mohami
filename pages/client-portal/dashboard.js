@@ -1121,8 +1121,8 @@ const DashboardContent = () => {
             position: relative;
             overflow: hidden;
             width: 100%;
-            margin: 0;
-            max-width: none;
+            margin: 0 auto;
+            max-width: 95%;
           }
           
           .mobile-stats-card::before {

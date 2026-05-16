@@ -1938,8 +1938,6 @@ const Layout = ({ children }) => {
                     overflow-x: hidden; /* Prevent horizontal scrollbar */
                     overflow-y: scroll; /* Force vertical scrollbar to prevent layout shift */
                     width: 100%;
-                    max-width: 100vw;
-                    overscroll-behavior-x: none;
                 }
 
                 body {
@@ -1950,8 +1948,6 @@ const Layout = ({ children }) => {
                     line-height: 1.5;
                     overflow-x: hidden; /* Prevent horizontal scrollbar */
                     width: 100%;
-                    max-width: 100vw;
-                    overscroll-behavior-x: none;
                 }
 
                 .layout-container {
@@ -3609,7 +3605,7 @@ const Layout = ({ children }) => {
                         display: flex !important;
                         justify-content: space-between;
                         align-items: center;
-                        padding: calc(8px + env(safe-area-inset-top, 0px)) 12px 6px 12px;
+                        padding: calc(16px + env(safe-area-inset-top, 0px)) 12px 8px 12px;
                         height: auto;
                         background: #FFFFFF;
                         position: fixed !important;
