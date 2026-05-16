@@ -3605,7 +3605,7 @@ const Layout = ({ children }) => {
                         display: flex !important;
                         justify-content: space-between;
                         align-items: center;
-                        padding: calc(16px + env(safe-area-inset-top, 0px)) 12px 8px 12px;
+                        padding: calc(24px + env(safe-area-inset-top, 0px)) 12px 8px 12px;
                         height: auto;
                         background: #FFFFFF;
                         position: fixed !important;
