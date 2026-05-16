@@ -805,7 +805,8 @@ const DashboardContent = () => {
         /* Mobile Portrait (< 480px) */
         @media (max-width: 479px) {
           .cp-dashboard {
-            padding: 12px 16px;
+            padding: 12px calc(16px + env(safe-area-inset-right, 0px)) 12px calc(16px + env(safe-area-inset-left, 0px));
+            overflow-x: hidden;
           }
 
           .welcome-title {
@@ -813,7 +814,7 @@ const DashboardContent = () => {
           }
 
           .welcome-banner {
-            padding: 14px 16px;
+            padding: 14px calc(16px + env(safe-area-inset-right, 0px)) 14px calc(16px + env(safe-area-inset-left, 0px));
             border-radius: 16px;
           }
 
@@ -1112,7 +1113,7 @@ const DashboardContent = () => {
             background: white;
             border-radius: 8px;
             border: 1px solid #e2e8f0;
-            padding: 20px 16px;
+            padding: 20px calc(16px + env(safe-area-inset-right, 0px)) 20px calc(16px + env(safe-area-inset-left, 0px));
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
             position: relative;
             overflow: hidden;
@@ -1874,11 +1875,11 @@ const DashboardContent = () => {
           }
 
           .section-header {
-            padding: 16px 16px 12px;
+            padding: 16px calc(16px + env(safe-area-inset-right, 0px)) 12px calc(16px + env(safe-area-inset-left, 0px));
           }
 
           .section-body {
-            padding: 8px 16px 16px;
+            padding: 8px calc(16px + env(safe-area-inset-right, 0px)) 16px calc(16px + env(safe-area-inset-left, 0px));
           }
 
           .section-title-wrap h2 {
