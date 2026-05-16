@@ -2,8 +2,6 @@ workflows:
   ios-workflow:
     name: iOS Build and Publish
     environment:
-      groups:
-        - app-env
       vars:
         BUNDLE_ID: com.mohamipro.app
       xcode: latest
