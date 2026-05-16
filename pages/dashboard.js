@@ -8598,6 +8598,57 @@ function Dashboard() {
           }
         }
 
+        /* iPad Portrait Mode (768px-1024px) - Reduce card widths */
+        @media (min-width: 768px) and (max-width: 1024px) {
+          /* Reduce calendar grid cell widths */
+          .calendar-grid-cell-modern {
+            padding: 8px !important;
+            min-height: 90px !important;
+          }
+
+          /* Reduce weekly day card widths */
+          .week-day-card {
+            padding: 8px 6px !important;
+          }
+
+          /* Reduce weekly sessions grid gap */
+          .weekly-sessions-grid-integrated {
+            gap: 8px !important;
+          }
+
+          /* Reduce mobile bento card widths */
+          .mobile-bento-card {
+            padding: 12px !important;
+          }
+
+          /* Reduce section header padding */
+          .section-header-mobile,
+          .mobile-title-bar {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+          }
+
+          /* Reduce calendar list padding */
+          .mobile-calendar-list {
+            padding: 0 4px !important;
+          }
+
+          /* Reduce stats section padding */
+          .mobile-stats-section {
+            padding: 0 4px !important;
+          }
+
+          /* Reduce chart container padding */
+          .mobile-chart-container {
+            padding: 0 4px !important;
+          }
+
+          /* Reduce financial grid gap */
+          .mobile-bento-financial-grid {
+            gap: 8px !important;
+          }
+        }
+
         /* REMOVED: Tablets/iPad in Portrait Mode 2-column layout
            Now using mobile dashboard layout for all devices <= 1024px width
            to match Android tablet behavior and prevent crowded UI on iPad portrait */
