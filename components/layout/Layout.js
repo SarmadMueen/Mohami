@@ -1036,16 +1036,20 @@ const Layout = ({ children }) => {
                     </div>
 
                     <div className="mobile-app-actions">
-                        {/* Back Button for mobile/iPad navigation */}
-                        {shouldShowBackButton && (
-                            <button
-                                className="mobile-back-button"
-                                onClick={() => router.back()}
-                                aria-label="رجوع"
-                            >
-                                <ChevronLeft size={22} />
-                            </button>
-                        )}
+                        {/* Back Button for mobile/iPad navigation - always visible */}
+                        <button
+                            className="mobile-back-button"
+                            onClick={() => {
+                                if (window.history.length > 1) {
+                                    router.back();
+                                } else {
+                                    router.push('/dashboard');
+                                }
+                            }}
+                            aria-label="رجوع"
+                        >
+                            <ChevronLeft size={22} />
+                        </button>
                     </div>
                 </div>
 
@@ -4173,7 +4177,7 @@ const Layout = ({ children }) => {
 
                 @media (max-width: 1024px) {
                     .mobile-back-button {
-                        display: flex;
+                        display: flex !important;
                     }
                 }
             `}</style>
