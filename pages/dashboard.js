@@ -9945,45 +9945,62 @@ function Dashboard() {
           box-shadow: 0 4px 12px -2px rgba(59, 130, 246, 0.15) !important;
         }
 
-        /* ═══ iPad Portrait Mode (768px-1024px) - FINAL OVERRIDES ═══ */
-        /* These MUST be at the very end to override all previous rules */
+        /* ── iPad Portrait (768-1024px): constrain card widths ── */
         @media (min-width: 768px) and (max-width: 1024px) {
           .mobile-dashboard-layout {
-            max-width: 90% !important;
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+
+          .mobile-bento-card {
+            max-width: 92% !important;
+            width: 92% !important;
             margin-left: auto !important;
             margin-right: auto !important;
           }
 
-          .mobile-bento-card,
-          .mobile-work-schedule-section,
-          .mobile-chart-container {
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-
-          .mobile-dashboard-layout .mobile-bento-financial-grid {
-            max-width: 100% !important;
+          .mobile-bento-financial-grid {
+            max-width: 92% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
           }
 
           .mobile-dashboard-layout .mobile-bento-financial-grid > .mobile-bento-card {
-            width: 100% !important;
             max-width: 100% !important;
+            width: 100% !important;
           }
 
-          .mobile-dashboard-layout .section-header-mobile,
-          .mobile-dashboard-layout .mobile-title-bar {
+          .mobile-stats-section {
+            max-width: 92% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .mobile-work-schedule-section {
+            max-width: 92% !important;
+            width: 92% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .mobile-current-week-calendar {
+            max-width: 92% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .section-header-mobile,
+          .mobile-title-bar {
+            max-width: 92% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .mobile-item-card {
             max-width: 100% !important;
           }
 
           .mobile-dashboard-layout .mobile-calendar-list {
-            max-width: 100% !important;
-          }
-
-          .mobile-dashboard-layout .mobile-current-week-calendar {
-            max-width: 100% !important;
-          }
-
-          .mobile-dashboard-layout .calendar-grid-cell-modern {
             max-width: 100% !important;
           }
         }
