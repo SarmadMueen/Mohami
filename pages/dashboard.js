@@ -8604,21 +8604,36 @@ function Dashboard() {
           .calendar-grid-cell-modern {
             padding: 8px !important;
             min-height: 90px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce weekly day card widths */
           .week-day-card {
             padding: 8px 6px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce weekly sessions grid gap */
           .weekly-sessions-grid-integrated {
             gap: 8px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce mobile bento card widths */
           .mobile-bento-card {
             padding: 12px !important;
+            max-width: 90% !important;
+            margin: 0 auto !important;
+          }
+
+          /* Reduce mobile bento financial grid widths */
+          .mobile-bento-financial-grid {
+            gap: 8px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce section header padding */
@@ -8626,26 +8641,29 @@ function Dashboard() {
           .mobile-title-bar {
             padding-left: 8px !important;
             padding-right: 8px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce calendar list padding */
           .mobile-calendar-list {
             padding: 0 4px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce stats section padding */
           .mobile-stats-section {
             padding: 0 4px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce chart container padding */
           .mobile-chart-container {
             padding: 0 4px !important;
-          }
-
-          /* Reduce financial grid gap */
-          .mobile-bento-financial-grid {
-            gap: 8px !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
         }
 

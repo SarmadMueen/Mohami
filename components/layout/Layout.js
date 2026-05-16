@@ -64,7 +64,8 @@ import {
     Receipt,
     ListTodo,
     Archive,
-    HelpCircle
+    HelpCircle,
+    ChevronLeft
 } from "lucide-react";
 import Logo from "../Logo";
 import { useSubscription } from "../../context/SubscriptionContext";
@@ -216,6 +217,39 @@ const Layout = ({ children }) => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    // Determine if back button should be shown (only on non-root pages for iPad)
+    const shouldShowBackButton = (() => {
+        const pathname = router.pathname;
+        // Root pages where back button should NOT be shown
+        const rootPages = [
+            '/dashboard',
+            '/',
+            '/cases/CasesTable',
+            '/services/legal-services',
+            '/client/all_clients',
+            '/cases/sessions',
+            '/reports',
+            '/accounting/accounting',
+            '/calendar',
+            '/templates',
+            '/lawyer/lawyer',
+            '/quick-archive',
+            '/help',
+            '/login',
+            '/register',
+            '/pricing',
+            '/features'
+        ];
+
+        // Check if current page is a root page
+        const isRootPage = rootPages.some(rootPath => 
+            pathname === rootPath || pathname.startsWith(rootPath + '/')
+        );
+
+        // Show back button if NOT a root page
+        return !isRootPage;
+    })();
 
     // Calculate dropdown position and close when clicking outside
     useEffect(() => {
@@ -1019,6 +1053,36 @@ const Layout = ({ children }) => {
                     {/* Left Side - Logo and Office Info */}
                     <div className="nav-left-section">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            {/* Back Button - Only visible on iPad */}
+                            {shouldShowBackButton && (
+                                <button
+                                    className="ipad-back-button"
+                                    onClick={() => router.back()}
+                                    aria-label="رجوع"
+                                    style={{
+                                        display: 'none',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        background: '#F8FAFC',
+                                        border: '1px solid #E2E8F0',
+                                        borderRadius: '8px',
+                                        padding: '8px',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s ease',
+                                        color: '#64748B'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = '#E2E8F0';
+                                        e.currentTarget.style.color = '#1E293B';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = '#F8FAFC';
+                                        e.currentTarget.style.color = '#64748B';
+                                    }}
+                                >
+                                    <ChevronLeft size={20} />
+                                </button>
+                            )}
                             {/* Logo */}
                             <Link href={router.pathname === '/' ? '/' : '/dashboard'}>
                                 <a className="brand-logo-inline" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
@@ -4061,6 +4125,21 @@ const Layout = ({ children }) => {
                 @keyframes modalFadeIn {
                     from { opacity: 0; transform: scale(0.95); }
                     to { opacity: 1; transform: scale(1); }
+                }
+
+                /* iPad-specific back button visibility */
+                /* iPad Portrait: 768px - 1024px */
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    .ipad-back-button {
+                        display: flex !important;
+                    }
+                }
+
+                /* iPad Landscape: 1025px - 1366px */
+                @media (min-width: 1025px) and (max-width: 1366px) {
+                    .ipad-back-button {
+                        display: flex !important;
+                    }
                 }
             `}</style>
         </div>
