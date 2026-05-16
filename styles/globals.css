@@ -383,6 +383,8 @@ button.tab *::-moz-selection,
   /* Site padding to account for fixed bottom nav */
   body {
     padding-bottom: 0px;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   /* Fixed Bottom Nav */

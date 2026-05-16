@@ -8688,12 +8688,24 @@ function Dashboard() {
           .dashboard {
             padding: 0px calc(8px + env(safe-area-inset-right, 0px)) 16px calc(8px + env(safe-area-inset-left, 0px)); /* Extra bottom padding for mobile with safe area */
             overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
           }
           .dashboard:has(.mobile-dashboard-layout) {
             padding-left: 0 !important;
             padding-right: 0 !important;
             padding-top: 0 !important;
             padding-bottom: 16px !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+
+          .mobile-dashboard-layout {
+            max-width: 100% !important;
+            width: 100% !important;
+            overflow-x: hidden !important;
+            box-sizing: border-box !important;
           }
 
           .standard-quick-actions {

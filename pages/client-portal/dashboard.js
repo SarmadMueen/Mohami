@@ -807,6 +807,9 @@ const DashboardContent = () => {
           .cp-dashboard {
             padding: 12px calc(16px + env(safe-area-inset-right, 0px)) 12px calc(16px + env(safe-area-inset-left, 0px));
             overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
           }
 
           .welcome-title {
