@@ -375,7 +375,7 @@ button.tab *::-moz-selection,
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
   /* Site padding to account for fixed bottom nav */
   body {

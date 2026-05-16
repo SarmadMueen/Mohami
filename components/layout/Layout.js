@@ -133,8 +133,8 @@ const Layout = ({ children }) => {
     });
     const [isMobilePhone, setIsMobilePhone] = useState(() => {
         if (typeof window !== 'undefined') {
-            // Use <= to include 768px (iPad mini portrait) for consistent mobile layout
-            return window.innerWidth <= 768;
+            // Use <= 1024 to include all iPad portrait modes (768px-1024px) for mobile header/bottom nav
+            return window.innerWidth <= 1024;
         }
         return false;
     });
@@ -159,8 +159,8 @@ const Layout = ({ children }) => {
     useEffect(() => {
         const checkScreenSize = () => {
             setIsMobileScreen(window.innerWidth < 1280);
-            // Use <= to include 768px (iPad mini portrait) for consistent mobile layout
-            setIsMobilePhone(window.innerWidth <= 768);
+            // Use <= 1024 to include all iPad portrait modes (768px-1024px) for mobile header/bottom nav
+            setIsMobilePhone(window.innerWidth <= 1024);
         };
 
         // Initial check
@@ -3172,7 +3172,7 @@ const Layout = ({ children }) => {
                 .mobile-only { display: none; }
 
                 /* Mobile Portal Overrides */
-                @media (max-width: 768px) {
+                @media (max-width: 1024px) {
                     .desktop-only { display: none !important; }
                     .mobile-only { display: flex !important; }
 
@@ -3496,7 +3496,7 @@ const Layout = ({ children }) => {
                     background: #e2e8f0;
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1024px) {
                     .standard-header {
                         height: 0 !important;
                         min-height: 0 !important;
