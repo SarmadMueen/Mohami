@@ -5304,6 +5304,11 @@ const CaseDetailsPage = () => {
     setSelectedFolder(folderName);
   };
 
+  const handleFolderTouch = (folderName, e) => {
+    e.preventDefault();
+    setSelectedFolder(folderName);
+  };
+
   const handleOpenAttachmentFolderSelection = () => {
     setIsFolderSelectionOpen(true);
   };
@@ -30627,8 +30632,33 @@ button {
             max-height: none;
           }
 
+          .attachments-folder-content {
+            min-height: 200px !important;
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+
           .attachments-folder-content > div {
             padding: 16px;
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: 200px !important;
+          }
+
+          .attachments-empty-folder {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 200px !important;
+            visibility: visible !important;
+          }
+
+          .attachments-folder-content-empty {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 200px !important;
           }
 
           .attachments-files-grid {

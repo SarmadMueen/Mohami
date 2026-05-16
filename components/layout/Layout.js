@@ -3605,7 +3605,7 @@ const Layout = ({ children }) => {
                         display: flex !important;
                         justify-content: space-between;
                         align-items: center;
-                        padding: calc(24px + env(safe-area-inset-top, 0px)) 12px 8px 12px;
+                        padding: calc(44px + env(safe-area-inset-top, 0px)) 12px 8px 12px;
                         height: auto;
                         background: #FFFFFF;
                         position: fixed !important;
@@ -3618,6 +3618,13 @@ const Layout = ({ children }) => {
                         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
                         direction: rtl;
                         width: 100% !important;
+                      }
+
+                      /* iPhone specific fix - increase padding for smaller screens */
+                      @media (max-width: 1023px) and (max-height: 1365px) {
+                        .mobile-app-header {
+                          padding: calc(50px + env(safe-area-inset-top, 0px)) 12px 8px 12px;
+                        }
                       }
 
                       /* iPad Pro 13 specific fix */

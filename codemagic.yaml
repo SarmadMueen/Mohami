@@ -102,6 +102,23 @@ workflows:
             echo "Available in public/AppIcons/:"
             ls -la public/AppIcons/
           fi
+      - name: Copy custom splash screen
+        script: |
+          echo "=== Copying custom splash screen from public/ ==="
+          # Copy the splash screen image to iOS project AFTER sync
+          if [ -f "public/splash.png" ]; then
+            echo "Source splash found at: public/splash.png"
+            echo "Copying to: ios/App/App/Assets.xcassets/Splash.imageset/"
+            mkdir -p ios/App/App/Assets.xcassets/Splash.imageset
+            cp public/splash.png ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png
+            cp public/splash.png ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png
+            cp public/splash.png ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
+            echo "✅ Custom splash screen copied to iOS project"
+            echo "Files in Splash.imageset:"
+            ls -la ios/App/App/Assets.xcassets/Splash.imageset/
+          else
+            echo "❌ Custom splash screen not found at public/splash.png"
+          fi
       - name: Install CocoaPods
         script: |
           echo "=== Looking for Podfile ==="
