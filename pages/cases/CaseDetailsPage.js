@@ -18466,7 +18466,7 @@ const CaseDetailsPage = () => {
                         const filesInSelectedFolder =
                           safeAttachmentsData.filter(
                             (a) =>
-                              a.folder_name === selectedFolder &&
+                              (a.folder_name || "").trim() === (selectedFolder || "").trim() &&
                               a.case_number === caseDetails?.case_number &&
                               a.file_name !== ".keep" &&
                               a.file_name !== ".placeholder",

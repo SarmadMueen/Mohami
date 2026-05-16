@@ -110,10 +110,10 @@ workflows:
             echo "Source splash found at: public/splash.png"
             echo "Copying to: ios/App/App/Assets.xcassets/Splash.imageset/"
             mkdir -p ios/App/App/Assets.xcassets/Splash.imageset
-            # Resize splash image to appropriate iPhone dimensions (smaller for better fit)
-            sips -z 640 1136 public/splash.png --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png
-            sips -z 640 1136 public/splash.png --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png
-            sips -z 640 1136 public/splash.png --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
+            # Resize splash image to appropriate iPhone dimensions (smaller for better fit - reduced from 640x1136 to 320x568)
+            sips -z 320 568 public/splash.png --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png
+            sips -z 320 568 public/splash.png --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png
+            sips -z 320 568 public/splash.png --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
             echo "✅ Custom splash screen resized and copied to iOS project"
             echo "Files in Splash.imageset:"
             ls -la ios/App/App/Assets.xcassets/Splash.imageset/

@@ -143,9 +143,9 @@ function Dashboard() {
 
     const detectMobileDashboard = () => {
       // Use screen width only, not platform detection
-      // Include iPad portrait modes (768px-1024px) in mobile layout for better UX
-      // This matches Android tablet behavior in portrait mode
-      setIsMobileDashboard(window.innerWidth <= 1024);
+      // Include iPad portrait modes (768px-1023px) in mobile layout for better UX
+      // iPad landscape (1024px+) will show desktop layout
+      setIsMobileDashboard(window.innerWidth < 1024);
     };
 
     detectMobileDashboard();
@@ -4486,7 +4486,7 @@ function Dashboard() {
           gap: 6px !important;
         }
         
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
           .dashboard-main-grid {
             grid-template-columns: 1fr;
           }
@@ -8429,7 +8429,7 @@ function Dashboard() {
           }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
           .dashboard {
             padding: 10px;
           }
@@ -8525,7 +8525,7 @@ function Dashboard() {
           }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
           .dashboard {
             padding: 8px;
           }
@@ -8598,8 +8598,8 @@ function Dashboard() {
           }
         }
 
-        /* iPad Portrait Mode (768px-1024px) - Reduce card widths */
-        @media (min-width: 768px) and (max-width: 1024px) {
+        /* iPad Portrait Mode (768px-1023px) - Reduce card widths */
+        @media (min-width: 768px) and (max-width: 1023px) {
           /* Reduce calendar grid cell widths */
           .calendar-grid-cell-modern {
             padding: 8px !important;
@@ -8680,7 +8680,7 @@ function Dashboard() {
           }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
           .dashboard-main-grid {
             display: none !important;
           }
@@ -9377,7 +9377,7 @@ function Dashboard() {
            .calendar-grid-cell-modern:nth-child(n+5) {
               border-left: none; /* Adjust borders for 4 columns if possible, but grid handles layout */
            }
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
           .mobile-dashboard-layout {
             padding: 0;
             background: #FFFFFF;
@@ -9970,7 +9970,7 @@ function Dashboard() {
         }
 
         /* ── iPad Portrait (768-1024px): constrain card widths ── */
-        @media (min-width: 768px) and (max-width: 1024px) {
+        @media (min-width: 768px) and (max-width: 1023px) {
           .dashboard:has(.mobile-dashboard-layout) {
             padding-left: 0 !important;
             padding-right: 0 !important;

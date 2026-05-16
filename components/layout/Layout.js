@@ -134,8 +134,9 @@ const Layout = ({ children }) => {
     });
     const [isMobilePhone, setIsMobilePhone] = useState(() => {
         if (typeof window !== 'undefined') {
-            // Use <= 1024 to include all iPad portrait modes (768px-1024px) for mobile header/bottom nav
-            return window.innerWidth <= 1024;
+            // Use < 1024 to include iPad portrait modes (768px-1023px) for mobile header/bottom nav
+            // iPad landscape (1024px+) will show desktop layout
+            return window.innerWidth < 1024;
         }
         return false;
     });
@@ -160,8 +161,9 @@ const Layout = ({ children }) => {
     useEffect(() => {
         const checkScreenSize = () => {
             setIsMobileScreen(window.innerWidth < 1280);
-            // Use <= 1024 to include all iPad portrait modes (768px-1024px) for mobile header/bottom nav
-            setIsMobilePhone(window.innerWidth <= 1024);
+            // Use < 1024 to include iPad portrait modes (768px-1023px) for mobile header/bottom nav
+            // iPad landscape (1024px+) will show desktop layout
+            setIsMobilePhone(window.innerWidth < 1024);
         };
 
         // Initial check
@@ -3150,7 +3152,7 @@ const Layout = ({ children }) => {
                     box-sizing: border-box;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 1023px) {
                     .main-content {
                         padding: 1rem 1.25rem;
                         min-height: calc(100vh - 64px);
@@ -3249,7 +3251,7 @@ const Layout = ({ children }) => {
                 .mobile-only { display: none; }
 
                 /* Mobile Portal Overrides */
-                @media (max-width: 1024px) {
+                @media (max-width: 1023px) {
                     .desktop-only { display: none !important; }
                     .mobile-only { display: flex !important; }
 
@@ -3573,7 +3575,7 @@ const Layout = ({ children }) => {
                     background: #e2e8f0;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 1023px) {
                     .standard-header {
                         height: 0 !important;
                         min-height: 0 !important;
@@ -3628,7 +3630,7 @@ const Layout = ({ children }) => {
                       }
 
                       /* iPad Pro 13 specific fix */
-                      @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) {
+                      @media (min-width: 1024px) and (max-width: 1023px) and (min-height: 1366px) {
                         .mobile-app-header {
                           padding: calc(32px + env(safe-area-inset-top, 0px)) 20px 12px 20px;
                         }
@@ -4163,8 +4165,8 @@ const Layout = ({ children }) => {
                 }
 
                 /* iPad-specific back button visibility */
-                /* iPad Portrait: 768px - 1024px */
-                @media (min-width: 768px) and (max-width: 1024px) {
+                /* iPad Portrait: 768px - 1023px */
+                @media (min-width: 768px) and (max-width: 1023px) {
                     .ipad-back-button {
                         display: flex !important;
                     }
@@ -4197,7 +4199,7 @@ const Layout = ({ children }) => {
                     transform: scale(0.95);
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 1023px) {
                     .mobile-back-button {
                         display: flex !important;
                     }
