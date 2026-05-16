@@ -8600,48 +8600,40 @@ function Dashboard() {
 
         /* iPad Portrait Mode (768px-1024px) - Reduce card widths */
         @media (min-width: 768px) and (max-width: 1024px) {
-          /* Constrain parent layout */
-          .mobile-dashboard-layout {
-            max-width: 85% !important;
-            margin: 0 auto !important;
-            padding: 0 12px !important;
-          }
-
           /* Reduce calendar grid cell widths */
           .calendar-grid-cell-modern {
             padding: 8px !important;
             min-height: 90px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce weekly day card widths */
           .week-day-card {
             padding: 8px 6px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce weekly sessions grid gap */
           .weekly-sessions-grid-integrated {
             gap: 8px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce mobile bento card widths */
           .mobile-bento-card {
             padding: 12px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-            width: 100% !important;
+            max-width: 90% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce mobile bento financial grid widths */
           .mobile-bento-financial-grid {
             gap: 8px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce section header padding */
@@ -8649,29 +8641,29 @@ function Dashboard() {
           .mobile-title-bar {
             padding-left: 8px !important;
             padding-right: 8px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce calendar list padding */
           .mobile-calendar-list {
             padding: 0 4px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce stats section padding */
           .mobile-stats-section {
             padding: 0 4px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
 
           /* Reduce chart container padding */
           .mobile-chart-container {
             padding: 0 4px !important;
-            max-width: 100% !important;
-            margin: 0 !important;
+            max-width: 95% !important;
+            margin: 0 auto !important;
           }
         }
 
@@ -9951,6 +9943,49 @@ function Dashboard() {
           background: #F8FAFC !important;
           border-color: #3B82F6 !important;
           box-shadow: 0 4px 12px -2px rgba(59, 130, 246, 0.15) !important;
+        }
+
+        /* ═══ iPad Portrait Mode (768px-1024px) - FINAL OVERRIDES ═══ */
+        /* These MUST be at the very end to override all previous rules */
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .mobile-dashboard-layout {
+            max-width: 90% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .mobile-bento-card,
+          .mobile-work-schedule-section,
+          .mobile-chart-container {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+
+          .mobile-dashboard-layout .mobile-bento-financial-grid {
+            max-width: 100% !important;
+          }
+
+          .mobile-dashboard-layout .mobile-bento-financial-grid > .mobile-bento-card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+
+          .mobile-dashboard-layout .section-header-mobile,
+          .mobile-dashboard-layout .mobile-title-bar {
+            max-width: 100% !important;
+          }
+
+          .mobile-dashboard-layout .mobile-calendar-list {
+            max-width: 100% !important;
+          }
+
+          .mobile-dashboard-layout .mobile-current-week-calendar {
+            max-width: 100% !important;
+          }
+
+          .mobile-dashboard-layout .calendar-grid-cell-modern {
+            max-width: 100% !important;
+          }
         }
       `}</style>
     </div >
