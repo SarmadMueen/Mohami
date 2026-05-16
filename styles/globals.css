@@ -357,11 +357,25 @@ button.tab *::-moz-selection,
   .layout-container .main-content {
     padding-left: 16px;
     padding-right: 16px;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   /* Hide desktop-only elements on tablets */
   .hide-on-mobile {
     display: none !important;
+  }
+
+  /* iPad Pro 13 specific fixes */
+  @media (min-height: 1366px) {
+    .mobile-dashboard-layout {
+      max-width: 90% !important;
+      margin: 0 auto !important;
+    }
+
+    .mobile-bento-card {
+      max-width: 100% !important;
+    }
   }
 }
 

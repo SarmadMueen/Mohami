@@ -3618,7 +3618,22 @@ const Layout = ({ children }) => {
                         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
                         direction: rtl;
                         width: 100% !important;
-                    }
+                      }
+
+                      /* iPad Pro 13 specific fix */
+                      @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) {
+                        .mobile-app-header {
+                          padding: calc(32px + env(safe-area-inset-top, 0px)) 20px 12px 20px;
+                        }
+
+                        .main-content {
+                          padding-top: calc(80px + env(safe-area-inset-top, 0px)) !important;
+                        }
+
+                        .mobile-search-bar-wrapper {
+                          padding-top: 8px !important;
+                        }
+                      }
 
                     .mobile-search-bar-container {
                         display: none;
