@@ -168,14 +168,7 @@ workflows:
           keychain initialize
       - name: Fetch signing files
         script: |
-          cat > /tmp/auth_key.p8 << 'EOF'
------BEGIN PRIVATE KEY-----
-MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgU43xHACwb6qgbJZX
-So4ucCn5XPK7lILs4jq7MM1XVhugCgYIKoZIzj0DAQehRANCAAQjYHnpYrOiARyf
-1QLDPKpwubm4FCDGIBt3P8R+lB2GrU5l7FY9GUa0kitHbg8hG3F+W3P54wFeArCp
-LL/+mOAb
------END PRIVATE KEY-----
-EOF
+          echo "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR1RhZ0FBNU1nQnlHUU00OUFnRUdDUWdTTTQ5QXdFSEJId2RJQkFRWVFnVTQzeEhBQ3diNnFnYkpZWgpT280dWNOWFhQS3dsSUw0amNxN01NMVhWaHVnQ2dZSUtvSnp6MERBRWhSQU5DQUFRallIZm5Zck9pQVJ5ZgpRMUxEUE1rcHd1YjRGQ0RHSUJ0M1A4UitMQjJHclU1bDdGWTlHVWEwa2l0SGJnOGhHM0YrVzNQNTR3RmVBckNwCkxMLyttT0FiCk1JR0dFQ0tFTQotLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tKg==" | base64 -d > /tmp/auth_key.p8
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create \
