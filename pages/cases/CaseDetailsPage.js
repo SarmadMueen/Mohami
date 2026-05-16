@@ -18394,6 +18394,8 @@ const CaseDetailsPage = () => {
                           : ""
                           }`}
                         onClick={() => handleFolderClick(folderName)}
+                        onTouchEnd={(e) => handleFolderTouch(folderName, e)}
+                        style={{ cursor: 'pointer', WebkitTapHighlightColor: 'transparent' }}
                       >
                         <span className="attachments-folder-icon">📁</span>
                         <span className="attachments-folder-name">
@@ -31478,6 +31480,13 @@ button {
           }
         }
       `}</style>
+    </Layout>
+  );
+};
+
+export default withAuth(CaseDetailsPage, ['can_view_cases']);
+
+export default withAuth(CaseDetailsPage, ['can_view_cases']);
     </Layout>
   );
 };
