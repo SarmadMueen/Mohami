@@ -1053,36 +1053,6 @@ const Layout = ({ children }) => {
                     {/* Left Side - Logo and Office Info */}
                     <div className="nav-left-section">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                            {/* Back Button - Only visible on iPad */}
-                            {shouldShowBackButton && (
-                                <button
-                                    className="ipad-back-button"
-                                    onClick={() => router.back()}
-                                    aria-label="رجوع"
-                                    style={{
-                                        display: 'none',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        background: '#F8FAFC',
-                                        border: '1px solid #E2E8F0',
-                                        borderRadius: '8px',
-                                        padding: '8px',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.2s ease',
-                                        color: '#64748B'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = '#E2E8F0';
-                                        e.currentTarget.style.color = '#1E293B';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.background = '#F8FAFC';
-                                        e.currentTarget.style.color = '#64748B';
-                                    }}
-                                >
-                                    <ChevronLeft size={20} />
-                                </button>
-                            )}
                             {/* Logo */}
                             <Link href={router.pathname === '/' ? '/' : '/dashboard'}>
                                 <a className="brand-logo-inline" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
@@ -1496,6 +1466,38 @@ const Layout = ({ children }) => {
                                 </div>
                             )}
                         </div>
+
+                        {/* Back Button - Only visible on iPad */}
+                        {shouldShowBackButton && (
+                            <button
+                                className="ipad-back-button"
+                                onClick={() => router.back()}
+                                aria-label="رجوع"
+                                style={{
+                                    display: 'none',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    background: '#F8FAFC',
+                                    border: '1px solid #E2E8F0',
+                                    borderRadius: '8px',
+                                    padding: '8px',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s ease',
+                                    color: '#64748B',
+                                    marginLeft: '12px'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = '#E2E8F0';
+                                    e.currentTarget.style.color = '#1E293B';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = '#F8FAFC';
+                                    e.currentTarget.style.color = '#64748B';
+                                }}
+                            >
+                                <ChevronLeft size={20} />
+                            </button>
+                        )}
 
                         {/* Profile Button with Dropdown - Always visible, positioned on the left side */}
                         <button

@@ -8600,40 +8600,48 @@ function Dashboard() {
 
         /* iPad Portrait Mode (768px-1024px) - Reduce card widths */
         @media (min-width: 768px) and (max-width: 1024px) {
+          /* Constrain parent layout */
+          .mobile-dashboard-layout {
+            max-width: 85% !important;
+            margin: 0 auto !important;
+            padding: 0 12px !important;
+          }
+
           /* Reduce calendar grid cell widths */
           .calendar-grid-cell-modern {
             padding: 8px !important;
             min-height: 90px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce weekly day card widths */
           .week-day-card {
             padding: 8px 6px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce weekly sessions grid gap */
           .weekly-sessions-grid-integrated {
             gap: 8px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce mobile bento card widths */
           .mobile-bento-card {
             padding: 12px !important;
-            max-width: 90% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            width: 100% !important;
           }
 
           /* Reduce mobile bento financial grid widths */
           .mobile-bento-financial-grid {
             gap: 8px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce section header padding */
@@ -8641,29 +8649,29 @@ function Dashboard() {
           .mobile-title-bar {
             padding-left: 8px !important;
             padding-right: 8px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce calendar list padding */
           .mobile-calendar-list {
             padding: 0 4px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce stats section padding */
           .mobile-stats-section {
             padding: 0 4px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
 
           /* Reduce chart container padding */
           .mobile-chart-container {
             padding: 0 4px !important;
-            max-width: 95% !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
           }
         }
 
