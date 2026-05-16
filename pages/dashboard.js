@@ -8470,7 +8470,6 @@ function Dashboard() {
           .chart-legend-compact {
             grid-template-columns: 1fr;
           }
-          }
           .quick-create-buttons-row {
             gap: 8px;
             margin-bottom: 16px;
@@ -8687,6 +8686,8 @@ function Dashboard() {
 
           .dashboard {
             padding: 0px 8px 16px 8px; /* Extra bottom padding for mobile */
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
           }
           .dashboard:has(.mobile-dashboard-layout) {
             padding-left: 0 !important;
@@ -9490,6 +9491,7 @@ function Dashboard() {
             max-width: 100% !important;
             align-self: stretch !important;
             box-sizing: border-box !important;
+            overflow-x: hidden !important;
           }
 
           .mobile-dashboard-layout .section-header-mobile,

@@ -1938,6 +1938,8 @@ const Layout = ({ children }) => {
                     overflow-x: hidden; /* Prevent horizontal scrollbar */
                     overflow-y: scroll; /* Force vertical scrollbar to prevent layout shift */
                     width: 100%;
+                    max-width: 100vw;
+                    overscroll-behavior-x: none;
                 }
 
                 body {
@@ -1948,6 +1950,8 @@ const Layout = ({ children }) => {
                     line-height: 1.5;
                     overflow-x: hidden; /* Prevent horizontal scrollbar */
                     width: 100%;
+                    max-width: 100vw;
+                    overscroll-behavior-x: none;
                 }
 
                 .layout-container {
