@@ -7,6 +7,44 @@ workflows:
         NEXT_PUBLIC_SUPABASE_URL: https://niwtiaalvvivyjqtgznw.supabase.co
         NEXT_PUBLIC_SUPABASE_ANON_KEY: $NEXT_PUBLIC_SUPABASE_ANON_KEY
         NEXT_PUBLIC_APP_URL: https://mohamipro.com
+        APP_STORE_CONNECT_ISSUER_ID: f36edcf2-4d3e-4a40-9bdc-a49bcd6b1e50
+        APP_STORE_CONNECT_KEY_IDENTIFIER: 8VNDGHD869
+        APP_STORE_CONNECT_PRIVATE_KEY: |
+          -----BEGIN PRIVATE KEY-----
+          MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgU43xHACwb6qgbJZX
+          So4ucCn5XPK7lILs4jq7MM1XVhugCgYIKoZIzj0DAQehRANCAAQjYHnpYrOiARyf
+          1QLDPKpwubm4FCDGIBt3P8R+lB2GrU5l7FY9GUa0kitHbg8hG3F+W3P54wFeArCp
+          LL/+mOAb
+          -----END PRIVATE KEY-----
+        CERTIFICATE_PRIVATE_KEY: |
+          -----BEGIN PRIVATE KEY-----
+          MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/JVTn6wS98BGR
+          wsgbXJnHP6tRmE507wbOwOB0ZojDeGoGy4g8XdAUb8A53VqmCnSmvyhgRA4LCwqb
+          EO30YuBjFlAeTeEODRWAKE388f7VIqbPn3Ov5icR8Ex3dHwPIw76pF8xHB6wREI6
+          hZzPQ5EZEVJtO3RZI/KZzb+9FdD1tb/cBiK4Q8ZUsCl7o2xJa+z59e8TvcA7y4Ko
+          Z8MZjU0AhCLeuATnLsgRCe72szLOBnOYgVGfrhVuUVVFZnf0c2isKQ45rxRMXT/c
+          hjx1I3CxGldjGv7wSPDtfbo6XBW/aozMDrJY1MqdtXpvjhUznzKGDk/DblBcXM1g
+          TWamXbujAgMBAAECggEAW+Imq+tKFsHBuFcxGRIM6/47rNfxkv1ZwOZvnxSw1oHa
+          OdT58sbH4SMM/OPekOWCyKsoTgo40+8lVIAxWqJzKb6Omdqm/jmk5bu6LYbokGz9
+          Ud3c3yfcDR/9qgiJID+ikjKUfcd+Kw5M5dPXmrxokevFOzPyzGze0Dda3ZqQnaPB
+          X7w1TnprYr/iGXfK/Um4PbCLLdxMG7m+rnop8lY3ZTOCXRAFbUVbJ1NvmCuTnWPa
+          PMoewbKiCD+b36k7ZbhokKAPTNc8xjyr/8/1CkoMg8Xw+L2HzPyzc30P34WfaeIQ
+          b4W8khujf9HB3FNviGY1PcrTUk9ZMPwnpcMoKHWZfQKBgQDdyxyFAo5He/7kcFdj
+          PhpQHhtXlvDqPqqja/7B3wp/pdFJxXt9Bi/3sk15rqfWEvTNR3kxXICfiE/rV5kS
+          HxLDC1cCHSJbRYmB6FCmyZ/HFqpIeQN86R6SdLCiqtIVc1FzX6FfQXwxJkb3HUBw
+          MTmKZoScW5qxhLSBx1GW/WLvXwKBgQDcoC/YakflZW8atFMOffniIVyv86w2yExC
+          BunS+ZL4n03Ij7lJWbKoLES2fQE130Ewte4t17LoxAE9/S8kUkj8TxAfgEwK0vJT
+          n9IAL0UVzKc4XTS0YIYhFf76qvC0AnKOhx2iqb1j9OVz9V3xTGEJMXvaYI1rVBba
+          hyT4bXyOPQKBgQCJi8PFDR+1X0Vk3/Kh3kqtMu6b9ES10GU8ceYMz0iQfwH68Riz
+          IVowD4iSlOkLDrh4cgHLxeUSipOdjLamEVUuVmMAMZcz6TzsrmkN9m47Jmg2B65N
+          Eble9DTyvGMK4Hg7x6upClB9npJV//MNYMmhdhB5cynNO1JCRZzouX1YmwKBgQCh
+          ZZH6yK011IF10Krd9CyET5GlqiW2ocqflr0hOLBarvdRHEsYrMS0oEXYFhR3m43u
+          G3lVEfFwtEqQVZJSCNwZr6EE2m9Gj9D0efs/ZVUtwFwoMI8o0V/t/lBcgga6OPwi
+          5hc48uF4qSPeM4Z4yj5GYmvPckiiVo6taKYUEsxGpQKBgFK/LMXF4feNDcMWRuZL
+          Ymr2+rC4AK1CUKBp0vT9tZzsrdamWAwHlmXyreolqpq89uo6uoc3DouKjTAnpuAl
+          qMWVDFQVbNlMRFYoJqCkBYwnLcB2yU7Ik50bpxy8hOXeOat2KWWLLLgG4uyu1c8l
+          cS+6UsroXgmkmU236KdJqdaD
+          -----END PRIVATE KEY-----
       xcode: latest
     triggering:
       events:
@@ -164,16 +202,9 @@ workflows:
           keychain initialize
       - name: Fetch signing files
         script: |
-          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > /tmp/auth_key.p8
-          echo "=== Debug: auth_key.p8 content ==="
-          cat /tmp/auth_key.p8
-          echo "=== End debug ==="
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
-            --create \
-            --private-key /tmp/auth_key.p8 \
-            --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
-            --issuer-id "$APP_STORE_CONNECT_ISSUER_ID"
+            --create
       - name: Set up code signing
         script: |
           keychain add-certificates
