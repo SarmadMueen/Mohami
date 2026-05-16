@@ -234,7 +234,6 @@ const LandingPage = () => {
         <title>Mohami Pro | محامي برو - أفضل نظام إدارة مكاتب محاماة في العراق</title>
         <meta name="description" content="محامي برو هو النظام القانوني الأول في العراق لإدارة مكاتب المحاماة. تنظيم القضايا، الجلسات، الموكلين، والتقارير المالية في منصة واحدة آمنة." />
         <meta name="keywords" content="محامي برو, برنامج محاماة العراق, إدارة مكاتب المحاماة, قانون العراق, تنظيم قضايا, مكتب محاماة رقمي, برنامج ادارة الموكلين" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.png" />
         <link rel="canonical" href="https://mohamipro.com" />
 
