@@ -31485,10 +31485,3 @@ button {
 };
 
 export default withAuth(CaseDetailsPage, ['can_view_cases']);
-
-export default withAuth(CaseDetailsPage, ['can_view_cases']);
-    </Layout>
-  );
-};
-
-export default withAuth(CaseDetailsPage, ['can_view_cases']);
