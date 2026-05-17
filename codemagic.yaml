@@ -84,7 +84,7 @@ workflows:
           keychain initialize
       - name: Fetch signing files
         script: |
-          echo "$APP_STORE_CONNECT_PRIVATE_KEY" | sed 's/\\n/\n/g' > /tmp/auth_key.p8
+          python3 -c "import os; print(os.environ.get('APP_STORE_CONNECT_PRIVATE_KEY').replace('\\\\n', '\n'), end='')" > /tmp/auth_key.p8
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create \
