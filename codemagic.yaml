@@ -84,7 +84,17 @@ workflows:
           keychain initialize
       - name: Fetch signing files
         script: |
+          echo "=== Debug: APP_STORE_CONNECT_PRIVATE_KEY content ==="
+          echo "$APP_STORE_CONNECT_PRIVATE_KEY"
+          echo ""
+          echo "=== Writing to file ==="
           echo "$APP_STORE_CONNECT_PRIVATE_KEY" > /tmp/auth_key.p8
+          echo "=== File contents ==="
+          cat /tmp/auth_key.p8
+          echo ""
+          echo "=== File size ==="
+          wc -c /tmp/auth_key.p8
+          echo ""
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create \
