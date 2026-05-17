@@ -5,8 +5,6 @@ workflows:
       cache_paths:
         - node_modules
     environment:
-      groups:
-        - new-env
       vars:
         BUNDLE_ID: com.mohamipro.app
       xcode: latest
