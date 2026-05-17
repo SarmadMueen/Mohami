@@ -7,6 +7,13 @@ workflows:
     environment:
       vars:
         BUNDLE_ID: com.mohamipro.app
+        NEXT_PUBLIC_SUPABASE_URL: https://niwtiaalvvivyjqtgznw.supabase.co
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: $NEXT_PUBLIC_SUPABASE_ANON_KEY
+        NEXT_PUBLIC_APP_URL: https://mohamipro.com
+        APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
+        APP_STORE_CONNECT_KEY_IDENTIFIER: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        APP_STORE_CONNECT_PRIVATE_KEY: $APP_STORE_CONNECT_PRIVATE_KEY
+        CERTIFICATE_PRIVATE_KEY: $CERTIFICATE_PRIVATE_KEY
       xcode: latest
     triggering:
       events:
@@ -79,7 +86,10 @@ workflows:
         script: |
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
-            --create
+            --create \
+            --private-key @env:APP_STORE_CONNECT_PRIVATE_KEY \
+            --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
+            --issuer-id "$APP_STORE_CONNECT_ISSUER_ID"
       - name: Set up code signing
         script: |
           keychain add-certificates
